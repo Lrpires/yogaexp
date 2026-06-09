@@ -7,166 +7,40 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #6366f1;
-      --primary-dark: #4f46e5;
-      --success: #10b981;
-      --warning: #f59e0b;
-      --danger: #ef4444;
-      --bg: #f0f2f7;
-      --text: #1e293b;
-      --muted: #64748b;
-      --border: #e2e8f0;
+      --primary: #6366f1; --primary-dark: #4f46e5;
+      --success: #10b981; --warning: #f59e0b;
+      --danger: #ef4444;  --bg: #f0f2f7;
+      --text: #1e293b;    --muted: #64748b; --border: #e2e8f0;
     }
     * { margin:0; padding:0; box-sizing:border-box; }
     body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--text); min-height:100vh; }
 
     /* LOGIN */
-    .login-screen {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, #1e1b4b 0%, #312e81 60%, #4338ca 100%);
-      padding: 20px;
-    }
-    .login-box {
-      background: white;
-      border-radius: 20px;
-      padding: 40px 36px;
-      width: 100%;
-      max-width: 380px;
-      box-shadow: 0 24px 64px rgba(0,0,0,0.35);
-      text-align: center;
-    }
-    .login-box .logo { font-size: 48px; margin-bottom: 16px; }
-    .login-box h1 { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
-    .login-box p  { font-size: 13px; color: var(--muted); margin-bottom: 28px; }
-    .login-input {
-      width: 100%;
-      padding: 12px 14px;
-      border: 1.5px solid var(--border);
-      border-radius: 10px;
-      font-size: 15px;
-      font-family: 'Inter', sans-serif;
-      text-align: center;
-      letter-spacing: 3px;
-      margin-bottom: 14px;
-      transition: border-color .2s;
-    }
-    .login-input:focus { outline: none; border-color: var(--primary); }
-    .login-btn {
-      width: 100%;
-      padding: 12px;
-      background: var(--primary);
-      color: white;
-      border: none;
-      border-radius: 10px;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      font-family: 'Inter', sans-serif;
-      transition: background .2s;
-    }
-    .login-btn:hover { background: var(--primary-dark); }
-    .login-error {
-      color: var(--danger);
-      font-size: 12px;
-      margin-top: 10px;
-      display: none;
-    }
-
-    /* TOKEN SETUP */
-    .token-screen {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--bg);
-      padding: 20px;
-    }
-    .token-box {
-      background: white;
-      border-radius: 20px;
-      padding: 36px;
-      width: 100%;
-      max-width: 520px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.1);
-    }
-    .token-box h2 { font-size: 18px; margin-bottom: 8px; }
-    .token-box p  { font-size: 13px; color: var(--muted); margin-bottom: 20px; line-height: 1.7; }
-    .steps { list-style: none; padding: 0; margin-bottom: 24px; counter-reset: s; }
-    .steps li {
-      counter-increment: s;
-      display: flex;
-      gap: 12px;
-      margin-bottom: 14px;
-      font-size: 13px;
-      line-height: 1.6;
-      align-items: flex-start;
-    }
-    .steps li::before {
-      content: counter(s);
-      flex-shrink: 0;
-      width: 22px; height: 22px;
-      background: var(--primary);
-      color: white;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 11px; font-weight: 700;
-    }
-    .steps code { background: #f1f5f9; border-radius: 4px; padding: 1px 6px; font-size: 12px; }
-    .token-row { display: flex; gap: 8px; }
-    .token-row input {
-      flex: 1;
-      padding: 10px 12px;
-      border: 1.5px solid var(--border);
-      border-radius: 8px;
-      font-size: 13px;
-      font-family: 'Inter', sans-serif;
-    }
-    .token-row input:focus { outline: none; border-color: var(--primary); }
-    .btn { padding:10px 18px; border-radius:8px; border:none; cursor:pointer; font-size:13px; font-weight:600; font-family:'Inter',sans-serif; transition:all .15s; display:inline-flex; align-items:center; gap:6px; }
-    .btn-primary { background:var(--primary); color:white; }
-    .btn-primary:hover { background:var(--primary-dark); }
-    .btn-ghost { background:#f1f5f9; color:var(--text); }
-    .btn-ghost:hover { background:#e2e8f0; }
-    .btn-del { background:transparent; color:#cbd5e1; padding:4px 6px; }
-    .btn-del:hover { color:var(--danger); background:#fff1f1; }
-    .btn-warn { background:var(--warning); color:white; }
-    .btn-warn:hover { background:#d97706; }
+    .login-screen { min-height:100vh; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg,#1e1b4b,#312e81,#4338ca); padding:20px; }
+    .login-box { background:white; border-radius:20px; padding:40px 36px; width:100%; max-width:360px; box-shadow:0 24px 64px rgba(0,0,0,.35); text-align:center; }
+    .login-box .logo { font-size:52px; margin-bottom:16px; }
+    .login-box h1 { font-size:20px; font-weight:700; margin-bottom:4px; }
+    .login-box p  { font-size:13px; color:var(--muted); margin-bottom:28px; }
+    .login-input { width:100%; padding:12px; border:1.5px solid var(--border); border-radius:10px; font-size:16px; font-family:'Inter',sans-serif; text-align:center; letter-spacing:4px; margin-bottom:14px; transition:border-color .2s; }
+    .login-input:focus { outline:none; border-color:var(--primary); }
+    .login-btn { width:100%; padding:12px; background:var(--primary); color:white; border:none; border-radius:10px; font-size:14px; font-weight:600; cursor:pointer; font-family:'Inter',sans-serif; }
+    .login-btn:hover { background:var(--primary-dark); }
+    .login-error { color:var(--danger); font-size:12px; margin-top:10px; display:none; }
 
     /* APP */
-    .app { display: none; }
-    .header {
-      background: linear-gradient(135deg, #1e1b4b 0%, #312e81 60%, #4338ca 100%);
-      color: white;
-      padding: 18px 28px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-    }
-    .header h1 { font-size: 18px; font-weight: 700; }
-    .header p  { font-size: 12px; opacity: .65; margin-top: 3px; }
+    .app { display:none; }
+    .header { background:linear-gradient(135deg,#1e1b4b,#312e81,#4338ca); color:white; padding:18px 28px; display:flex; justify-content:space-between; align-items:center; gap:16px; }
+    .header h1 { font-size:18px; font-weight:700; }
+    .header p  { font-size:12px; opacity:.65; margin-top:3px; }
     .header-actions { display:flex; gap:8px; align-items:center; flex-shrink:0; }
-    .save-badge {
-      font-size: 12px; padding: 5px 12px; border-radius: 20px;
-      background: rgba(255,255,255,.12); display:flex; align-items:center; gap:6px; white-space:nowrap;
-    }
-    .save-badge.ok     { background: rgba(16,185,129,.28); }
-    .save-badge.saving { background: rgba(245,158,11,.28); }
-    .save-badge.err    { background: rgba(239,68,68,.28); }
+    .save-badge { font-size:12px; padding:5px 12px; border-radius:20px; background:rgba(255,255,255,.12); display:flex; align-items:center; gap:6px; white-space:nowrap; }
+    .save-badge.ok     { background:rgba(16,185,129,.28); }
+    .save-badge.saving { background:rgba(245,158,11,.28); }
+    .save-badge.err    { background:rgba(239,68,68,.28); }
 
-    .tabs-bar {
-      background:white; border-bottom:1px solid var(--border);
-      padding:0 28px; display:flex; gap:2px; overflow-x:auto; scrollbar-width:none;
-    }
+    .tabs-bar { background:white; border-bottom:1px solid var(--border); padding:0 28px; display:flex; gap:2px; overflow-x:auto; scrollbar-width:none; }
     .tabs-bar::-webkit-scrollbar { display:none; }
-    .tab-btn {
-      padding:13px 15px; cursor:pointer; border:none; background:transparent;
-      font-size:13px; font-weight:500; color:var(--muted); border-bottom:3px solid transparent;
-      white-space:nowrap; transition:all .18s; font-family:'Inter',sans-serif;
-    }
+    .tab-btn { padding:13px 15px; cursor:pointer; border:none; background:transparent; font-size:13px; font-weight:500; color:var(--muted); border-bottom:3px solid transparent; white-space:nowrap; transition:all .18s; font-family:'Inter',sans-serif; }
     .tab-btn:hover  { color:var(--primary); background:#f5f6ff; }
     .tab-btn.active { color:var(--primary); border-bottom-color:var(--primary); }
 
@@ -175,7 +49,7 @@
 
     .metrics-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(165px,1fr)); gap:14px; margin-bottom:22px; }
     .mc { background:white; border-radius:14px; padding:18px 20px; box-shadow:0 1px 3px rgba(0,0,0,.05),0 4px 14px rgba(0,0,0,.06); border-left:4px solid var(--primary); }
-    .mc:nth-child(2){border-left-color:#f59e0b;} .mc:nth-child(3){border-left-color:#10b981;} .mc:nth-child(4){border-left-color:#ec4899;}
+    .mc:nth-child(2){border-left-color:#f59e0b;}.mc:nth-child(3){border-left-color:#10b981;}.mc:nth-child(4){border-left-color:#ec4899;}
     .mc-label { font-size:11px; font-weight:600; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; margin-bottom:8px; }
     .mc-value { font-size:30px; font-weight:700; }
 
@@ -208,29 +82,32 @@
     .cl-item input[type="checkbox"] { width:16px; height:16px; accent-color:var(--primary); cursor:pointer; flex-shrink:0; }
     .cl-text { flex:1; }
     .cl-item.done .cl-text input { text-decoration:line-through; color:var(--muted); }
-
     .progress-wrap { height:6px; background:var(--border); border-radius:99px; margin-bottom:16px; overflow:hidden; }
     .progress-bar  { height:100%; background:var(--primary); border-radius:99px; transition:width .4s; }
 
-    @media(max-width:640px) {
-      .header { padding:14px 16px; }
-      .tabs-bar, .page { padding-left:16px; padding-right:16px; }
-      .kv-row { grid-template-columns:120px 1fr; }
+    .btn { padding:8px 14px; border-radius:8px; border:none; cursor:pointer; font-size:12px; font-weight:600; font-family:'Inter',sans-serif; transition:all .15s; display:inline-flex; align-items:center; gap:5px; }
+    .btn-primary { background:var(--primary); color:white; } .btn-primary:hover { background:var(--primary-dark); }
+    .btn-ghost   { background:#f1f5f9; color:var(--text); }  .btn-ghost:hover   { background:#e2e8f0; }
+    .btn-del     { background:transparent; color:#cbd5e1; padding:4px 7px; } .btn-del:hover { color:var(--danger); background:#fff1f1; }
+
+    @media(max-width:640px){
+      .header,.tabs-bar,.page{padding-left:16px;padding-right:16px;}
+      .kv-row{grid-template-columns:120px 1fr;}
     }
-    @media print {
-      .header-actions,.tabs-bar,.btn,.login-screen,.token-screen { display:none!important; }
-      .page { display:block!important; }
+    @media print{
+      .header-actions,.tabs-bar,.btn,.login-screen{display:none!important;}
+      .page{display:block!important;}
     }
   </style>
 </head>
 <body>
 
-<!-- ════ TELA DE LOGIN ════ -->
+<!-- LOGIN -->
 <div class="login-screen" id="loginScreen">
   <div class="login-box">
     <div class="logo">🧘</div>
     <h1>Yoga Experience</h1>
-    <p>Malhas Wilson · Painel de Evento<br>Digite a senha para continuar</p>
+    <p>Malhas Wilson &middot; Painel do Evento</p>
     <input class="login-input" id="pwdInput" type="password" placeholder="••••••" maxlength="32"
            onkeydown="if(event.key==='Enter')doLogin()">
     <button class="login-btn" onclick="doLogin()">Entrar</button>
@@ -238,53 +115,51 @@
   </div>
 </div>
 
-
-<!-- ════ APLICATIVO ════ -->
+<!-- APP -->
 <div class="app" id="app">
-
   <div class="header">
     <div>
-      <h1>🧘 Yoga Experience · Malhas Wilson</h1>
+      <h1>Yoga Experience &middot; Malhas Wilson</h1>
       <p>Planejamento Completo do Evento</p>
     </div>
     <div class="header-actions">
-      <div class="save-badge" id="saveBadge">⏳ Carregando...</div>
-      <button class="btn btn-ghost" onclick="triggerSave()">💾 Salvar</button>
-      <button class="btn btn-ghost" onclick="window.print()">🖨 Imprimir</button>
-      <button class="btn btn-ghost" onclick="logout()" title="Sair">🔒 Sair</button>
+      <div class="save-badge" id="saveBadge">Carregando...</div>
+      <button class="btn btn-ghost" onclick="triggerSave()">Salvar</button>
+      <button class="btn btn-ghost" onclick="window.print()">Imprimir</button>
+      <button class="btn btn-ghost" onclick="logout()">Sair</button>
     </div>
   </div>
 
   <div class="tabs-bar">
-    <button class="tab-btn active" onclick="openTab(event,'t-dashboard')">📊 Dashboard</button>
-    <button class="tab-btn" onclick="openTab(event,'t-orcamento')">💰 Orçamento</button>
-    <button class="tab-btn" onclick="openTab(event,'t-convidadas')">👥 Convidadas</button>
-    <button class="tab-btn" onclick="openTab(event,'t-kits')">🎁 Kits</button>
-    <button class="tab-btn" onclick="openTab(event,'t-checklist')">✅ Checklist</button>
-    <button class="tab-btn" onclick="openTab(event,'t-cronograma')">🕐 Cronograma</button>
-    <button class="tab-btn" onclick="openTab(event,'t-parceiros')">🤝 Parceiros</button>
-    <button class="tab-btn" onclick="openTab(event,'t-metricas')">📈 Métricas</button>
+    <button class="tab-btn active" onclick="openTab(event,'t-dashboard')">Dashboard</button>
+    <button class="tab-btn" onclick="openTab(event,'t-orcamento')">Orcamento</button>
+    <button class="tab-btn" onclick="openTab(event,'t-convidadas')">Convidadas</button>
+    <button class="tab-btn" onclick="openTab(event,'t-kits')">Kits</button>
+    <button class="tab-btn" onclick="openTab(event,'t-checklist')">Checklist</button>
+    <button class="tab-btn" onclick="openTab(event,'t-cronograma')">Cronograma</button>
+    <button class="tab-btn" onclick="openTab(event,'t-parceiros')">Parceiros</button>
+    <button class="tab-btn" onclick="openTab(event,'t-metricas')">Metricas</button>
   </div>
 
   <!-- DASHBOARD -->
   <div id="t-dashboard" class="page active">
     <div class="metrics-grid">
-      <div class="mc"><div class="mc-label">Convidadas</div><div class="mc-value" id="m-conv">—</div></div>
-      <div class="mc"><div class="mc-label">Influenciadoras</div><div class="mc-value" id="m-influenc">—</div></div>
-      <div class="mc"><div class="mc-label">Kits preparados</div><div class="mc-value" id="m-kits">—</div></div>
-      <div class="mc"><div class="mc-label">Meta de Alcance</div><div class="mc-value" id="m-alcance">—</div></div>
+      <div class="mc"><div class="mc-label">Convidadas</div><div class="mc-value" id="m-conv">0</div></div>
+      <div class="mc"><div class="mc-label">Influenciadoras</div><div class="mc-value" id="m-influenc">0</div></div>
+      <div class="mc"><div class="mc-label">Kits preparados</div><div class="mc-value" id="m-kits">0</div></div>
+      <div class="mc"><div class="mc-label">Meta de Alcance</div><div class="mc-value" id="m-alcance">-</div></div>
     </div>
     <div class="card">
       <div class="card-hd"><h2>Resumo do Evento</h2></div>
       <div class="kv-grid">
-        <div class="kv-row"><div class="kv-label">Nome do evento</div><div class="kv-val"><input class="fi" data-sec="dash" data-key="nome" placeholder="Nome do evento"></div></div>
+        <div class="kv-row"><div class="kv-label">Nome do evento</div><div class="kv-val"><input class="fi" data-sec="dash" data-key="nome"></div></div>
         <div class="kv-row"><div class="kv-label">Data</div><div class="kv-val"><input class="fi" type="date" data-sec="dash" data-key="data"></div></div>
         <div class="kv-row"><div class="kv-label">Local</div><div class="kv-val"><input class="fi" data-sec="dash" data-key="local" placeholder="Endereco / Espaco"></div></div>
-        <div class="kv-row"><div class="kv-label">Responsavel</div><div class="kv-val"><input class="fi" data-sec="dash" data-key="resp" placeholder="Nome do organizador"></div></div>
-        <div class="kv-row"><div class="kv-label">N. Influenciadoras</div><div class="kv-val"><input class="fi" type="number" data-sec="dash" data-key="nInfluenc" placeholder="Ex: 15"></div></div>
+        <div class="kv-row"><div class="kv-label">Responsavel</div><div class="kv-val"><input class="fi" data-sec="dash" data-key="resp" placeholder="Nome"></div></div>
+        <div class="kv-row"><div class="kv-label">N. Influenciadoras</div><div class="kv-val"><input class="fi" type="number" data-sec="dash" data-key="nInfluenc"></div></div>
         <div class="kv-row"><div class="kv-label">Meta de alcance</div><div class="kv-val"><input class="fi" data-sec="dash" data-key="alcance" placeholder="Ex: 300K"></div></div>
-        <div class="kv-row"><div class="kv-label">Objetivo</div><div class="kv-val"><textarea class="fi" data-sec="dash" data-key="objetivo" placeholder="Objetivo do evento..."></textarea></div></div>
-        <div class="kv-row"><div class="kv-label">Observacoes</div><div class="kv-val"><textarea class="fi" data-sec="dash" data-key="obs" placeholder="Anotacoes gerais..."></textarea></div></div>
+        <div class="kv-row"><div class="kv-label">Objetivo</div><div class="kv-val"><textarea class="fi" data-sec="dash" data-key="objetivo"></textarea></div></div>
+        <div class="kv-row"><div class="kv-label">Observacoes</div><div class="kv-val"><textarea class="fi" data-sec="dash" data-key="obs"></textarea></div></div>
       </div>
     </div>
   </div>
@@ -295,11 +170,7 @@
       <div class="card-hd"><h2>Controle Financeiro</h2><button class="btn btn-primary" onclick="addRow('orc')">+ Adicionar</button></div>
       <div class="tbl-wrap">
         <table><thead><tr><th>Item</th><th>Previsto (R$)</th><th>Real (R$)</th><th>Status</th><th>Notas</th><th></th></tr></thead><tbody id="orc-body"></tbody></table>
-        <div class="budget-foot">
-          <span>Previsto: <strong id="tot-prev">R$ 0,00</strong></span>
-          <span>Realizado: <strong id="tot-real">R$ 0,00</strong></span>
-          <span>Diferenca: <strong id="tot-diff">R$ 0,00</strong></span>
-        </div>
+        <div class="budget-foot">Previsto: <strong id="tot-prev">R$ 0,00</strong>&nbsp;&nbsp;&nbsp;Realizado: <strong id="tot-real">R$ 0,00</strong>&nbsp;&nbsp;&nbsp;Diferenca: <strong id="tot-diff">R$ 0,00</strong></div>
       </div>
     </div>
   </div>
@@ -308,7 +179,7 @@
   <div id="t-convidadas" class="page">
     <div class="card">
       <div class="card-hd"><h2>Lista de Convidadas</h2><div style="display:flex;gap:8px;align-items:center;"><span id="conv-count" style="font-size:12px;color:var(--muted)"></span><button class="btn btn-primary" onclick="addRow('conv')">+ Adicionar</button></div></div>
-      <div class="tbl-wrap"><table><thead><tr><th>Nome</th><th>Empresa / Perfil</th><th>Instagram</th><th>Telefone</th><th>Confirmada?</th><th>Tipo</th><th></th></tr></thead><tbody id="conv-body"></tbody></table></div>
+      <div class="tbl-wrap"><table><thead><tr><th>Nome</th><th>Empresa</th><th>Instagram</th><th>Telefone</th><th>Confirmada?</th><th>Tipo</th><th></th></tr></thead><tbody id="conv-body"></tbody></table></div>
     </div>
   </div>
 
@@ -354,341 +225,267 @@
     <div class="card">
       <div class="card-hd"><h2>Metricas Pos-Evento</h2></div>
       <div class="kv-grid">
-        <div class="kv-row"><div class="kv-label">Presentes</div><div class="kv-val"><input class="fi" type="number" data-sec="met" data-key="presentes" placeholder="Ex: 38"></div></div>
-        <div class="kv-row"><div class="kv-label">Stories publicados</div><div class="kv-val"><input class="fi" type="number" data-sec="met" data-key="stories" placeholder="Ex: 120"></div></div>
-        <div class="kv-row"><div class="kv-label">Reels publicados</div><div class="kv-val"><input class="fi" type="number" data-sec="met" data-key="reels" placeholder="Ex: 25"></div></div>
-        <div class="kv-row"><div class="kv-label">Alcance estimado</div><div class="kv-val"><input class="fi" data-sec="met" data-key="alcanceReal" placeholder="Ex: 380K"></div></div>
-        <div class="kv-row"><div class="kv-label">Leads gerados</div><div class="kv-val"><input class="fi" type="number" data-sec="met" data-key="leads" placeholder="Ex: 15"></div></div>
-        <div class="kv-row"><div class="kv-label">Marcas interessadas</div><div class="kv-val"><input class="fi" type="number" data-sec="met" data-key="marcas" placeholder="Ex: 8"></div></div>
-        <div class="kv-row"><div class="kv-label">Pedidos gerados</div><div class="kv-val"><input class="fi" type="number" data-sec="met" data-key="pedidos" placeholder="Ex: 12"></div></div>
-        <div class="kv-row"><div class="kv-label">Faturamento</div><div class="kv-val"><input class="fi" data-sec="met" data-key="fat" placeholder="Ex: R$ 15.000"></div></div>
-        <div class="kv-row"><div class="kv-label">Avaliacao geral</div><div class="kv-val">
-          <select class="fi" data-sec="met" data-key="aval">
-            <option value="">Selecione</option>
-            <option>Ruim</option><option>Regular</option><option>Bom</option><option>Otimo</option><option>Excelente</option>
-          </select>
-        </div></div>
-        <div class="kv-row"><div class="kv-label">Aprendizados</div><div class="kv-val"><textarea class="fi" data-sec="met" data-key="aprend" placeholder="O que funcionou / o que melhorar..."></textarea></div></div>
+        <div class="kv-row"><div class="kv-label">Presentes</div><div class="kv-val"><input class="fi" type="number" data-sec="met" data-key="presentes"></div></div>
+        <div class="kv-row"><div class="kv-label">Stories publicados</div><div class="kv-val"><input class="fi" type="number" data-sec="met" data-key="stories"></div></div>
+        <div class="kv-row"><div class="kv-label">Reels publicados</div><div class="kv-val"><input class="fi" type="number" data-sec="met" data-key="reels"></div></div>
+        <div class="kv-row"><div class="kv-label">Alcance estimado</div><div class="kv-val"><input class="fi" data-sec="met" data-key="alcanceReal"></div></div>
+        <div class="kv-row"><div class="kv-label">Leads gerados</div><div class="kv-val"><input class="fi" type="number" data-sec="met" data-key="leads"></div></div>
+        <div class="kv-row"><div class="kv-label">Marcas interessadas</div><div class="kv-val"><input class="fi" type="number" data-sec="met" data-key="marcas"></div></div>
+        <div class="kv-row"><div class="kv-label">Pedidos gerados</div><div class="kv-val"><input class="fi" type="number" data-sec="met" data-key="pedidos"></div></div>
+        <div class="kv-row"><div class="kv-label">Faturamento</div><div class="kv-val"><input class="fi" data-sec="met" data-key="fat"></div></div>
+        <div class="kv-row"><div class="kv-label">Avaliacao geral</div><div class="kv-val"><select class="fi" data-sec="met" data-key="aval"><option value="">Selecione</option><option>Ruim</option><option>Regular</option><option>Bom</option><option>Otimo</option><option>Excelente</option></select></div></div>
+        <div class="kv-row"><div class="kv-label">Aprendizados</div><div class="kv-val"><textarea class="fi" data-sec="met" data-key="aprend"></textarea></div></div>
       </div>
     </div>
   </div>
-
-</div><!-- /app -->
+</div>
 
 <script>
-// ════════════════════════════════════════
-//  CONFIG
-// ════════════════════════════════════════
-var GITHUB_USER   = 'lrpires';
-var GITHUB_REPO   = 'yogaexp';
-var GITHUB_FILE   = 'data.json';
-var GITHUB_BRANCH = 'main';
-var GITHUB_TOKEN  = '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';
-var PASSWORD_HASH = '743772463770ad60427d18abe6712873a548504279228bbc8071634bfc75a07a';
+// ── CONFIG ──────────────────────────────────────────────
+var GH_USER   = 'lrpires';
+var GH_REPO   = 'yogaexp';
+var GH_FILE   = 'data.json';
+var GH_BRANCH = 'main';
+var GH_TOKEN  = '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';
+var PWD_HASH  = '743772463770ad60427d18abe6712873a548504279228bbc8071634bfc75a07a';
 
-var RAW_URL = 'https://raw.githubusercontent.com/' + GITHUB_USER + '/' + GITHUB_REPO + '/' + GITHUB_BRANCH + '/' + GITHUB_FILE;
-var API_URL = 'https://api.github.com/repos/' + GITHUB_USER + '/' + GITHUB_REPO + '/contents/' + GITHUB_FILE;
+var API_URL = 'https://api.github.com/repos/' + GH_USER + '/' + GH_REPO + '/contents/' + GH_FILE;
 
-// ════════════════════════════════════════
-//  LOGIN
-// ════════════════════════════════════════
-async function hashStr(str) {
-  var buf  = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
-  return Array.from(new Uint8Array(buf)).map(function(b){ return b.toString(16).padStart(2,'0'); }).join('');
+// ── LOGIN ────────────────────────────────────────────────
+async function hashStr(s) {
+  var buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s));
+  return Array.from(new Uint8Array(buf)).map(function(b){return b.toString(16).padStart(2,'0');}).join('');
 }
 
 async function doLogin() {
-  var pwd = document.getElementById('pwdInput').value;
-  var h   = await hashStr(pwd);
-  if (h === PASSWORD_HASH) {
-    document.getElementById('loginError').style.display = 'none';
-    sessionStorage.setItem('yogaAuth', '1');
-    afterLogin();
+  var h = await hashStr(document.getElementById('pwdInput').value);
+  if (h === PWD_HASH) {
+    sessionStorage.setItem('auth','1');
+    document.getElementById('loginScreen').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+    bindKv();
+    await loadData();
+    renderAll();
   } else {
     document.getElementById('loginError').style.display = 'block';
     document.getElementById('pwdInput').value = '';
-    document.getElementById('pwdInput').focus();
   }
 }
 
-function afterLogin() {
-  document.getElementById('loginScreen').style.display = 'none';
-  showApp();
-}
+function logout() { sessionStorage.removeItem('auth'); location.reload(); }
 
-function logout() {
-  sessionStorage.removeItem('yogaAuth');
-  location.reload();
-}
-
-// ════════════════════════════════════════
-//  DADOS PADRAO
-// ════════════════════════════════════════
+// ── DADOS PADRAO ─────────────────────────────────────────
 var DEFAULTS = {
-  dash: { nome:'Yoga Experience Malhas Wilson', nInfluenc:'15', alcance:'300K', objetivo:'Apresentar as malhas da Wilson para marcas fitness e influenciadoras.' },
-  met:  {},
-  orc: [
-    {item:'Locacao Espaco',  prev:'',real:'',status:'Pendente',notas:''},
-    {item:'Instrutora Yoga', prev:'',real:'',status:'Pendente',notas:''},
-    {item:'Fotografo',       prev:'',real:'',status:'Pendente',notas:''},
-    {item:'Videomaker',      prev:'',real:'',status:'Pendente',notas:''},
-    {item:'Brunch',          prev:'',real:'',status:'Pendente',notas:''},
-    {item:'Kits',            prev:'',real:'',status:'Pendente',notas:''},
-    {item:'Brindes',         prev:'',real:'',status:'Pendente',notas:''},
-    {item:'Backdrop',        prev:'',real:'',status:'Pendente',notas:''},
+  dash:{ nome:'1 Yoga Experience Malhas Wilson', nInfluenc:'60', alcance:'', objetivo:'Apresentar as malhas da Wilson para marcas fitness e influenciadoras.', data:'', local:'', resp:'Renato', obs:'' },
+  met:{},
+  orc:[
+    {item:'Locacao Espaco',   prev:'800',  real:'',status:'Pendente',notas:''},
+    {item:'Instrutora Yoga',  prev:'1200', real:'',status:'Pendente',notas:''},
+    {item:'Fotos e Videos',   prev:'500',  real:'',status:'Pendente',notas:''},
+    {item:'Cafe da Manha',    prev:'700',  real:'',status:'Pendente',notas:''},
+    {item:'Tapetes de Yoga',  prev:'1500', real:'',status:'Pendente',notas:''},
+    {item:'Kits',             prev:'8000', real:'',status:'Pendente',notas:''},
   ],
-  conv:    [{nome:'',empresa:'',instagram:'',tel:'',confirm:'Pendente',tipo:'Convidada'}],
-  kit:     [{nome:'',tamanho:'M',entregue:'Nao',data:'',obs:''}],
-  kititem: [{item:'Ecobag',qtd:'50',fornec:''},{item:'Garrafa',qtd:'50',fornec:''},{item:'Top Fitness',qtd:'50',fornec:''},{item:'Legging',qtd:'50',fornec:''},{item:'Toalha',qtd:'50',fornec:''}],
-  checklist: [
+  conv:[
+    {nome:'Janayna',        empresa:'Vem Ca',   instagram:'',tel:'',confirm:'Pendente',tipo:'Convidada'},
+    {nome:'Ana Paula',      empresa:'Spertos',  instagram:'',tel:'',confirm:'Pendente',tipo:'Convidada'},
+    {nome:'Poliana',        empresa:'Spertos',  instagram:'',tel:'',confirm:'Pendente',tipo:'Convidada'},
+    {nome:'Juliana',        empresa:'Spertos',  instagram:'',tel:'',confirm:'Pendente',tipo:'Convidada'},
+    {nome:'Luana',          empresa:'Time Fit', instagram:'',tel:'',confirm:'Pendente',tipo:'Convidada'},
+    {nome:'Edjane',         empresa:'Camboriu', instagram:'',tel:'',confirm:'Pendente',tipo:'Convidada'},
+    {nome:'Marta',          empresa:'Haus',     instagram:'',tel:'',confirm:'Pendente',tipo:'Convidada'},
+    {nome:'Filha de Arnaldo',empresa:'Haus',    instagram:'',tel:'',confirm:'Pendente',tipo:'Convidada'},
+  ],
+  kit:[],
+  kititem:[
+    {item:'Top Fitness',        qtd:'60',fornec:'Decidir: Supreme ou Easy'},
+    {item:'Legging',            qtd:'60',fornec:'Decidir: Supreme ou Easy'},
+    {item:'Blusa',              qtd:'60',fornec:'Sport Dry'},
+    {item:'Garrafa Personalizada',qtd:'60',fornec:''},
+  ],
+  checklist:[
     {text:'Definir local',done:false},{text:'Confirmar instrutora',done:false},
     {text:'Contratar fotografo',done:false},{text:'Contratar videomaker',done:false},
     {text:'Separar kits',done:false},{text:'Confirmar brunch',done:false},
     {text:'Montar backdrop',done:false},{text:'Imprimir lista check-in',done:false},
     {text:'Confirmar influenciadoras',done:false},{text:'Conferir brindes',done:false},
   ],
-  cron: [
-    {hora:'07:00',ativ:'Recepcao',resp:'',local:'',notas:''},
-    {hora:'07:30',ativ:'Entrega dos Kits',resp:'',local:'',notas:''},
-    {hora:'08:00',ativ:'Aulao de Yoga',resp:'',local:'',notas:''},
-    {hora:'09:00',ativ:'Alongamento',resp:'',local:'',notas:''},
-    {hora:'09:15',ativ:'Fotos Oficiais',resp:'',local:'',notas:''},
-    {hora:'09:45',ativ:'Brunch Fitness',resp:'',local:'',notas:''},
-    {hora:'10:30',ativ:'Apresentacao Wilson',resp:'',local:'',notas:''},
-    {hora:'11:00',ativ:'Networking',resp:'',local:'',notas:''},
-    {hora:'12:00',ativ:'Encerramento',resp:'',local:'',notas:''},
+  cron:[
+    {hora:'07:00',ativ:'Recepcao',         resp:'',local:'',notas:''},
+    {hora:'07:15',ativ:'Aulao de Yoga',    resp:'',local:'',notas:''},
+    {hora:'08:15',ativ:'Cafe da Manha',    resp:'',local:'',notas:''},
   ],
-  parc: [{empresa:'',contra:'',resp:'',contato:'',status:'Em negociacao'}],
+  parc:[{empresa:'',contra:'',resp:'',contato:'',status:'Em negociacao'}],
 };
 
 var DB = JSON.parse(JSON.stringify(DEFAULTS));
 
-// ════════════════════════════════════════
-//  COLUNA DEFS
-// ════════════════════════════════════════
+// ── COLUNAS ──────────────────────────────────────────────
 var DEFS = {
-  orc:     [{k:'item',t:'text',ph:'Nome do item'},{k:'prev',t:'number',ph:'0.00'},{k:'real',t:'number',ph:'0.00'},{k:'status',t:'sel',opts:['Pendente','Pago','Cancelado']},{k:'notas',t:'text',ph:'Obs'}],
-  conv:    [{k:'nome',t:'text',ph:'Nome completo'},{k:'empresa',t:'text',ph:'Empresa'},{k:'instagram',t:'text',ph:'@usuario'},{k:'tel',t:'text',ph:'Telefone'},{k:'confirm',t:'sel',opts:['Pendente','Confirmada','Recusou','Lista espera']},{k:'tipo',t:'sel',opts:['Convidada','Influenciadora','Marca','Imprensa']}],
-  kit:     [{k:'nome',t:'text',ph:'Nome'},{k:'tamanho',t:'sel',opts:['PP','P','M','G','GG','Unico']},{k:'entregue',t:'sel',opts:['Nao','Sim']},{k:'data',t:'date'},{k:'obs',t:'text',ph:'Obs'}],
-  kititem: [{k:'item',t:'text',ph:'Nome do item'},{k:'qtd',t:'number',ph:'0'},{k:'fornec',t:'text',ph:'Fornecedor'}],
-  cron:    [{k:'hora',t:'time'},{k:'ativ',t:'text',ph:'Atividade'},{k:'resp',t:'text',ph:'Responsavel'},{k:'local',t:'text',ph:'Local'},{k:'notas',t:'text',ph:'Notas'}],
-  parc:    [{k:'empresa',t:'text',ph:'Empresa'},{k:'contra',t:'text',ph:'Contrapartida'},{k:'resp',t:'text',ph:'Responsavel'},{k:'contato',t:'text',ph:'Contato'},{k:'status',t:'sel',opts:['Em negociacao','Confirmado','Recusou']}],
+  orc:    [{k:'item',t:'text',ph:'Item'},{k:'prev',t:'number',ph:'0'},{k:'real',t:'number',ph:'0'},{k:'status',t:'sel',opts:['Pendente','Pago','Cancelado']},{k:'notas',t:'text',ph:'Obs'}],
+  conv:   [{k:'nome',t:'text',ph:'Nome'},{k:'empresa',t:'text',ph:'Empresa'},{k:'instagram',t:'text',ph:'@'},{k:'tel',t:'text',ph:'Telefone'},{k:'confirm',t:'sel',opts:['Pendente','Confirmada','Recusou','Lista espera']},{k:'tipo',t:'sel',opts:['Convidada','Influenciadora','Marca','Imprensa']}],
+  kit:    [{k:'nome',t:'text',ph:'Nome'},{k:'tamanho',t:'sel',opts:['PP','P','M','G','GG','Unico']},{k:'entregue',t:'sel',opts:['Nao','Sim']},{k:'data',t:'date'},{k:'obs',t:'text',ph:'Obs'}],
+  kititem:[{k:'item',t:'text',ph:'Item'},{k:'qtd',t:'number',ph:'0'},{k:'fornec',t:'text',ph:'Fornecedor'}],
+  cron:   [{k:'hora',t:'time'},{k:'ativ',t:'text',ph:'Atividade'},{k:'resp',t:'text',ph:'Responsavel'},{k:'local',t:'text',ph:'Local'},{k:'notas',t:'text',ph:'Notas'}],
+  parc:   [{k:'empresa',t:'text',ph:'Empresa'},{k:'contra',t:'text',ph:'Contrapartida'},{k:'resp',t:'text',ph:'Responsavel'},{k:'contato',t:'text',ph:'Contato'},{k:'status',t:'sel',opts:['Em negociacao','Confirmado','Recusou']}],
 };
 
-// ════════════════════════════════════════
-//  RENDER
-// ════════════════════════════════════════
+// ── RENDER ───────────────────────────────────────────────
 function renderTable(key) {
-  var tbody = document.getElementById(key + '-body');
+  var tbody = document.getElementById(key+'-body');
   if (!tbody) return;
   tbody.innerHTML = '';
-  (DB[key] || []).forEach(function(row, ri) {
+  (DB[key]||[]).forEach(function(row,ri){
     var tr = document.createElement('tr');
-    DEFS[key].forEach(function(col) {
-      var td = document.createElement('td');
-      var el;
-      if (col.t === 'sel') {
-        el = document.createElement('select'); el.className = 'fi';
-        col.opts.forEach(function(o) { var opt = document.createElement('option'); opt.value = opt.textContent = o; if (row[col.k]===o) opt.selected=true; el.appendChild(opt); });
+    DEFS[key].forEach(function(col){
+      var td = document.createElement('td'), el;
+      if (col.t==='sel') {
+        el = document.createElement('select'); el.className='fi';
+        col.opts.forEach(function(o){ var opt=document.createElement('option'); opt.value=opt.textContent=o; if(row[col.k]===o) opt.selected=true; el.appendChild(opt); });
       } else {
-        el = document.createElement('input'); el.type = col.t||'text'; el.className = 'fi'; el.placeholder = col.ph||''; el.value = row[col.k]||'';
+        el = document.createElement('input'); el.type=col.t||'text'; el.className='fi'; el.placeholder=col.ph||''; el.value=row[col.k]||'';
       }
-      el.addEventListener('input', function() {
-        DB[key][ri][col.k] = el.value;
-        if (key==='orc') updateBudget();
-        if (key==='conv') updateConvCount();
-        if (key==='kit') updateKitsCount();
-        scheduleSave();
-      });
+      el.addEventListener('input',function(){ DB[key][ri][col.k]=el.value; if(key==='orc')updateBudget(); if(key==='conv')updateConvCount(); if(key==='kit')updateKitsCount(); scheduleSave(); });
       td.appendChild(el); tr.appendChild(td);
     });
-    var tdDel = document.createElement('td');
-    var btn = document.createElement('button'); btn.className='btn btn-del'; btn.textContent='x';
-    btn.onclick = function() { DB[key].splice(ri,1); renderTable(key); if(key==='orc')updateBudget(); if(key==='conv')updateConvCount(); if(key==='kit')updateKitsCount(); scheduleSave(); };
-    tdDel.appendChild(btn); tr.appendChild(tdDel); tbody.appendChild(tr);
+    var tdx=document.createElement('td'), b=document.createElement('button');
+    b.className='btn btn-del'; b.textContent='x';
+    b.onclick=function(){ DB[key].splice(ri,1); renderTable(key); if(key==='orc')updateBudget(); if(key==='conv')updateConvCount(); if(key==='kit')updateKitsCount(); scheduleSave(); };
+    tdx.appendChild(b); tr.appendChild(tdx); tbody.appendChild(tr);
   });
 }
 
 function addRow(key) {
-  var blank = {};
-  DEFS[key].forEach(function(c){ blank[c.k] = c.t==='sel' ? c.opts[0] : ''; });
+  var blank={}; DEFS[key].forEach(function(c){ blank[c.k]=c.t==='sel'?c.opts[0]:''; });
   DB[key].push(blank); renderTable(key); scheduleSave();
 }
 
 function renderChecklist() {
-  var cont = document.getElementById('cl-list'); cont.innerHTML = '';
-  var done = 0;
-  DB.checklist.forEach(function(item, i) {
-    if (item.done) done++;
-    var div = document.createElement('div'); div.className = 'cl-item' + (item.done?' done':'');
-    var cb = document.createElement('input'); cb.type='checkbox'; cb.checked=item.done;
-    cb.onchange = function() { DB.checklist[i].done=cb.checked; renderChecklist(); scheduleSave(); };
-    var wrap = document.createElement('div'); wrap.className='cl-text';
-    var inp = document.createElement('input'); inp.className='fi'; inp.value=item.text; inp.placeholder='Tarefa...';
-    inp.oninput = function() { DB.checklist[i].text=inp.value; scheduleSave(); };
-    var del = document.createElement('button'); del.className='btn btn-del'; del.textContent='x';
-    del.onclick = function() { DB.checklist.splice(i,1); renderChecklist(); scheduleSave(); };
+  var cont=document.getElementById('cl-list'); cont.innerHTML=''; var done=0;
+  DB.checklist.forEach(function(item,i){
+    if(item.done) done++;
+    var div=document.createElement('div'); div.className='cl-item'+(item.done?' done':'');
+    var cb=document.createElement('input'); cb.type='checkbox'; cb.checked=item.done;
+    cb.onchange=function(){ DB.checklist[i].done=cb.checked; renderChecklist(); scheduleSave(); };
+    var wrap=document.createElement('div'); wrap.className='cl-text';
+    var inp=document.createElement('input'); inp.className='fi'; inp.value=item.text; inp.placeholder='Tarefa...';
+    inp.oninput=function(){ DB.checklist[i].text=inp.value; scheduleSave(); };
+    var del=document.createElement('button'); del.className='btn btn-del'; del.textContent='x';
+    del.onclick=function(){ DB.checklist.splice(i,1); renderChecklist(); scheduleSave(); };
     wrap.appendChild(inp); div.appendChild(cb); div.appendChild(wrap); div.appendChild(del); cont.appendChild(div);
   });
-  var pct = DB.checklist.length ? Math.round(done/DB.checklist.length*100) : 0;
-  document.getElementById('cl-bar').style.width = pct + '%';
-  document.getElementById('cl-prog').textContent = done + ' / ' + DB.checklist.length + ' concluidos (' + pct + '%)';
+  var pct=DB.checklist.length?Math.round(done/DB.checklist.length*100):0;
+  document.getElementById('cl-bar').style.width=pct+'%';
+  document.getElementById('cl-prog').textContent=done+' / '+DB.checklist.length+' concluidos ('+pct+'%)';
 }
 
-function addCheckItem() { DB.checklist.push({text:'',done:false}); renderChecklist(); scheduleSave(); }
+function addCheckItem(){ DB.checklist.push({text:'',done:false}); renderChecklist(); scheduleSave(); }
 
-function populateKv(sec) {
-  document.querySelectorAll('[data-sec="' + sec + '"]').forEach(function(el) {
-    var k = el.getAttribute('data-key');
-    if (DB[sec][k] !== undefined) el.value = DB[sec][k];
+function populateKv(sec){
+  document.querySelectorAll('[data-sec="'+sec+'"]').forEach(function(el){
+    var k=el.getAttribute('data-key'); if(DB[sec][k]!==undefined) el.value=DB[sec][k];
   });
 }
 
-function bindKv() {
-  document.querySelectorAll('[data-sec]').forEach(function(el) {
-    el.addEventListener('input', function() {
-      var sec = el.getAttribute('data-sec'), key = el.getAttribute('data-key');
-      DB[sec][key] = el.value;
-      if (sec==='dash') updateDashMetrics();
+function bindKv(){
+  document.querySelectorAll('[data-sec]').forEach(function(el){
+    el.addEventListener('input',function(){
+      DB[el.getAttribute('data-sec')][el.getAttribute('data-key')]=el.value;
+      if(el.getAttribute('data-sec')==='dash') updateDashMetrics();
       scheduleSave();
     });
   });
 }
 
-function updateDashMetrics() {
-  document.getElementById('m-conv').textContent    = DB.conv.length;
-  document.getElementById('m-influenc').textContent = DB.dash.nInfluenc || '—';
-  document.getElementById('m-kits').textContent    = DB.kit.length;
-  document.getElementById('m-alcance').textContent = DB.dash.alcance || '—';
+function updateDashMetrics(){
+  document.getElementById('m-conv').textContent=DB.conv.length;
+  document.getElementById('m-influenc').textContent=DB.dash.nInfluenc||'-';
+  document.getElementById('m-kits').textContent=DB.kit.length;
+  document.getElementById('m-alcance').textContent=DB.dash.alcance||'-';
 }
 
-function updateBudget() {
-  var prev=0, real=0;
+function updateBudget(){
+  var prev=0,real=0;
   DB.orc.forEach(function(r){ prev+=parseFloat(r.prev)||0; real+=parseFloat(r.real)||0; });
-  var fmt = function(v){ return 'R$ '+v.toLocaleString('pt-BR',{minimumFractionDigits:2}); };
-  document.getElementById('tot-prev').textContent = fmt(prev);
-  document.getElementById('tot-real').textContent = fmt(real);
-  var diff = prev-real;
-  var el = document.getElementById('tot-diff');
-  el.textContent = fmt(Math.abs(diff));
-  el.style.color = diff>=0 ? 'var(--success)' : 'var(--danger)';
+  var fmt=function(v){ return 'R$ '+v.toLocaleString('pt-BR',{minimumFractionDigits:2}); };
+  document.getElementById('tot-prev').textContent=fmt(prev);
+  document.getElementById('tot-real').textContent=fmt(real);
+  var diff=prev-real, el=document.getElementById('tot-diff');
+  el.textContent=fmt(Math.abs(diff)); el.style.color=diff>=0?'var(--success)':'var(--danger)';
 }
 
-function updateConvCount() {
-  var conf = DB.conv.filter(function(r){ return r.confirm==='Confirmada'; }).length;
-  document.getElementById('conv-count').textContent = DB.conv.length + ' cadastradas · ' + conf + ' confirmadas';
+function updateConvCount(){
+  var c=DB.conv.filter(function(r){return r.confirm==='Confirmada';}).length;
+  document.getElementById('conv-count').textContent=DB.conv.length+' cadastradas / '+c+' confirmadas';
 }
 
-function updateKitsCount() {
-  var ent = DB.kit.filter(function(r){ return r.entregue==='Sim'; }).length;
-  document.getElementById('kits-count').textContent = DB.kit.length + ' pessoas · ' + ent + ' entregues';
+function updateKitsCount(){
+  var e=DB.kit.filter(function(r){return r.entregue==='Sim';}).length;
+  document.getElementById('kits-count').textContent=DB.kit.length+' pessoas / '+e+' entregues';
 }
 
-function renderAll() {
+function renderAll(){
   populateKv('dash'); populateKv('met');
   Object.keys(DEFS).forEach(function(k){ renderTable(k); });
   renderChecklist(); updateDashMetrics(); updateBudget(); updateConvCount(); updateKitsCount();
 }
 
-// ════════════════════════════════════════
-//  GITHUB API
-// ════════════════════════════════════════
-var saveTimer;
-var currentSha = null;
-
-function setBadge(state, txt) {
-  var el = document.getElementById('saveBadge');
-  el.className = 'save-badge ' + state;
-  el.textContent = txt;
-}
-
-function scheduleSave() {
-  clearTimeout(saveTimer);
-  setBadge('saving', 'Aguardando...');
-  saveTimer = setTimeout(triggerSave, 2000);
-}
-
-function collectForms() {
-  document.querySelectorAll('[data-sec]').forEach(function(el) {
-    DB[el.getAttribute('data-sec')][el.getAttribute('data-key')] = el.value;
+function collectForms(){
+  document.querySelectorAll('[data-sec]').forEach(function(el){
+    DB[el.getAttribute('data-sec')][el.getAttribute('data-key')]=el.value;
   });
 }
 
-async function triggerSave() {
-  collectForms();
-  setBadge('saving', 'Salvando...');
-  try {
-    var content = btoa(unescape(encodeURIComponent(JSON.stringify(DB, null, 2))));
-    var body = { message: 'Update: ' + new Date().toLocaleString('pt-BR'), content: content, branch: GITHUB_BRANCH };
-    if (currentSha) body.sha = currentSha;
+// ── GITHUB API ───────────────────────────────────────────
+var saveTimer, currentSha=null;
 
-    var r = await fetch(API_URL, {
-      method: 'PUT',
-      headers: { Authorization: 'token ' + GITHUB_TOKEN, Accept: 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
-      body: JSON.stringify(body)
-    });
-    var json = await r.json();
-    if (r.ok) {
-      currentSha = json.content.sha;
-      setBadge('ok', 'Salvo no GitHub');
-    } else {
-      throw new Error(json.message || 'Erro');
-    }
-  } catch(e) {
-    setBadge('err', 'Erro ao salvar');
-    console.error(e);
-  }
+function setBadge(state,txt){
+  var el=document.getElementById('saveBadge');
+  el.className='save-badge '+state; el.textContent=txt;
 }
 
-async function loadFromGitHub() {
-  setBadge('saving', 'Carregando...');
-  try {
-    var token = localStorage.getItem('yogaGhToken');
-    var headers = { Accept: 'application/vnd.github.v3+json', Authorization: 'token ' + GITHUB_TOKEN };
+function scheduleSave(){ clearTimeout(saveTimer); setBadge('saving','Aguardando...'); saveTimer=setTimeout(triggerSave,2000); }
 
-    var r = await fetch(API_URL + '?ref=' + GITHUB_BRANCH + '&t=' + Date.now(), { headers: headers });
-    if (r.status === 404) {
-      // Arquivo nao existe ainda: cria com dados padrao
-      setBadge('saving', 'Inicializando...');
-      await triggerSave();
-      return;
-    }
-    var json = await r.json();
-    currentSha = json.sha;
-    var decoded = decodeURIComponent(escape(atob(json.content.replace(/\n/g,''))));
-    var parsed = JSON.parse(decoded);
-    Object.keys(parsed).forEach(function(k){ DB[k] = parsed[k]; });
-    setBadge('ok', 'Carregado do GitHub');
-  } catch(e) {
-    setBadge('err', 'Erro ao carregar');
-    console.error(e);
-  }
+async function triggerSave(){
+  collectForms(); setBadge('saving','Salvando...');
+  try {
+    var content=btoa(unescape(encodeURIComponent(JSON.stringify(DB,null,2))));
+    var body={ message:'Update '+new Date().toLocaleString('pt-BR'), content:content, branch:GH_BRANCH };
+    if(currentSha) body.sha=currentSha;
+    var r=await fetch(API_URL,{ method:'PUT', headers:{Authorization:'token '+GH_TOKEN, Accept:'application/vnd.github.v3+json','Content-Type':'application/json'}, body:JSON.stringify(body) });
+    var json=await r.json();
+    if(r.ok){ currentSha=json.content.sha; setBadge('ok','Salvo no GitHub'); }
+    else throw new Error(json.message);
+  } catch(e){ setBadge('err','Erro ao salvar'); console.error(e); }
 }
 
-// ════════════════════════════════════════
-//  TABS
-// ════════════════════════════════════════
-function openTab(e, id) {
+async function loadData(){
+  setBadge('saving','Carregando...');
+  try {
+    var r=await fetch(API_URL+'?ref='+GH_BRANCH+'&t='+Date.now(),{ headers:{Authorization:'token '+GH_TOKEN, Accept:'application/vnd.github.v3+json'} });
+    if(r.status===404){ await triggerSave(); return; }
+    var json=await r.json();
+    currentSha=json.sha;
+    var parsed=JSON.parse(decodeURIComponent(escape(atob(json.content.replace(/\n/g,'')))));
+    Object.keys(parsed).forEach(function(k){ DB[k]=parsed[k]; });
+    setBadge('ok','Carregado do GitHub');
+  } catch(e){ setBadge('err','Erro ao carregar'); console.error(e); }
+}
+
+// ── TABS ─────────────────────────────────────────────────
+function openTab(e,id){
   document.querySelectorAll('.page').forEach(function(p){ p.classList.remove('active'); });
   document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
   document.getElementById(id).classList.add('active');
   e.currentTarget.classList.add('active');
 }
 
-// ════════════════════════════════════════
-//  INIT
-// ════════════════════════════════════════
-async function showApp() {
-  document.getElementById('app').style.display = 'block';
+// ── INIT ─────────────────────────────────────────────────
+if(sessionStorage.getItem('auth')==='1'){
+  document.getElementById('loginScreen').style.display='none';
+  document.getElementById('app').style.display='block';
   bindKv();
-  await loadFromGitHub();
-  renderAll();
-}
-
-// Verifica se ja esta autenticado nesta sessao
-if (sessionStorage.getItem('yogaAuth') === '1') {
-  document.getElementById('loginScreen').style.display = 'none';
-  afterLogin();
+  loadData().then(renderAll);
 }
 </script>
 </body>
