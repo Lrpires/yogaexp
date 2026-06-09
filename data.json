@@ -1,12 +1,12 @@
 {
   "dash": {
-    "nome": "",
-    "nInfluenc": "",
+    "nome": "1º Yoga Experience Malhas Wilson ",
+    "nInfluenc": "60",
     "alcance": "",
-    "objetivo": "",
+    "objetivo": "Apresentar as malhas da Wilson para marcas fitness e influenciadoras.",
     "data": "",
     "local": "",
-    "resp": "",
+    "responsavel": "Renato",
     "obs": ""
   },
   "met": {
@@ -14,66 +14,53 @@
     "stories": "",
     "reels": "",
     "alcanceReal": "",
+    "impressoes": "",
     "leads": "",
     "marcas": "",
     "pedidos": "",
-    "fat": "",
-    "aval": "",
-    "aprend": ""
+    "faturamento": "",
+    "avaliacao": "",
+    "aprendizados": ""
   },
   "orc": [
     {
-      "item": "Locacao Espaco",
-      "prev": "",
+      "item": "Locação Espaço",
+      "prev": "800",
       "real": "",
       "status": "Pendente",
       "notas": ""
     },
     {
       "item": "Instrutora Yoga",
-      "prev": "",
+      "prev": "1200",
       "real": "",
       "status": "Pendente",
       "notas": ""
     },
     {
-      "item": "Fotografo",
-      "prev": "",
+      "item": "Fotos e Vídeos",
+      "prev": "500",
       "real": "",
       "status": "Pendente",
       "notas": ""
     },
     {
-      "item": "Videomaker",
-      "prev": "",
+      "item": "Café da Manhã",
+      "prev": "700",
       "real": "",
       "status": "Pendente",
       "notas": ""
     },
     {
-      "item": "Brunch",
-      "prev": "",
+      "item": "Tapetes de Yoga",
+      "prev": "1500",
       "real": "",
       "status": "Pendente",
       "notas": ""
     },
     {
       "item": "Kits",
-      "prev": "",
-      "real": "",
-      "status": "Pendente",
-      "notas": ""
-    },
-    {
-      "item": "Brindes",
-      "prev": "",
-      "real": "",
-      "status": "Pendente",
-      "notas": ""
-    },
-    {
-      "item": "Backdrop",
-      "prev": "",
+      "prev": "8000",
       "real": "",
       "status": "Pendente",
       "notas": ""
@@ -81,47 +68,90 @@
   ],
   "conv": [
     {
-      "nome": "",
-      "empresa": "",
+      "nome": "Janayna",
+      "empresa": "Vem Ca",
+      "instagram": "",
+      "tel": "",
+      "confirm": "Pendente",
+      "tipo": "Convidada"
+    },
+    {
+      "nome": "Ana Paula",
+      "empresa": "Spertos",
+      "instagram": "",
+      "tel": "",
+      "confirm": "Pendente",
+      "tipo": "Convidada"
+    },
+    {
+      "nome": "Poliana",
+      "empresa": "Spertos",
+      "instagram": "",
+      "tel": "",
+      "confirm": "Pendente",
+      "tipo": "Convidada"
+    },
+    {
+      "nome": "Juliana",
+      "empresa": "Spertos",
+      "instagram": "",
+      "tel": "",
+      "confirm": "Pendente",
+      "tipo": "Convidada"
+    },
+    {
+      "nome": "Luana",
+      "empresa": "Time Fit",
+      "instagram": "",
+      "tel": "",
+      "confirm": "Pendente",
+      "tipo": "Convidada"
+    },
+    {
+      "nome": "Edjane",
+      "empresa": "Camboriú",
+      "instagram": "",
+      "tel": "",
+      "confirm": "Pendente",
+      "tipo": "Convidada"
+    },
+    {
+      "nome": "Marta",
+      "empresa": "Haus",
+      "instagram": "",
+      "tel": "",
+      "confirm": "Pendente",
+      "tipo": "Convidada"
+    },
+    {
+      "nome": "Filha de Arnaldo",
+      "empresa": "Haus",
       "instagram": "",
       "tel": "",
       "confirm": "Pendente",
       "tipo": "Convidada"
     }
   ],
-  "kit": [
-    {
-      "nome": "",
-      "tamanho": "M",
-      "entregue": "Nao",
-      "data": "",
-      "obs": ""
-    }
-  ],
+  "kit": [],
   "kititem": [
     {
-      "item": "Ecobag",
-      "qtd": "50",
-      "fornec": ""
-    },
-    {
-      "item": "Garrafa",
-      "qtd": "50",
-      "fornec": ""
-    },
-    {
       "item": "Top Fitness",
-      "qtd": "50",
-      "fornec": ""
+      "qtd": "60",
+      "fornec": "Decidir: Supreme ou Easy"
     },
     {
       "item": "Legging",
-      "qtd": "50",
-      "fornec": ""
+      "qtd": "60",
+      "fornec": "Decidir: Supreme ou Easy"
     },
     {
-      "item": "Toalha",
-      "qtd": "50",
+      "item": "Blusa",
+      "qtd": "60",
+      "fornec": "Sport Dry"
+    },
+    {
+      "item": "Garrafa Personalizada",
+      "qtd": "60",
       "fornec": ""
     }
   ],
@@ -135,7 +165,7 @@
       "done": false
     },
     {
-      "text": "Contratar fotografo",
+      "text": "Contratar fotógrafo",
       "done": false
     },
     {
@@ -170,63 +200,21 @@
   "cron": [
     {
       "hora": "07:00",
-      "ativ": "Recepcao",
+      "ativ": "Recepção",
       "resp": "",
       "local": "",
       "notas": ""
     },
     {
-      "hora": "07:30",
-      "ativ": "Entrega dos Kits",
+      "hora": "07:15",
+      "ativ": "Aulão de Yoga",
       "resp": "",
       "local": "",
       "notas": ""
     },
     {
-      "hora": "08:00",
-      "ativ": "Aulao de Yoga",
-      "resp": "",
-      "local": "",
-      "notas": ""
-    },
-    {
-      "hora": "09:00",
-      "ativ": "Alongamento",
-      "resp": "",
-      "local": "",
-      "notas": ""
-    },
-    {
-      "hora": "09:15",
-      "ativ": "Fotos Oficiais",
-      "resp": "",
-      "local": "",
-      "notas": ""
-    },
-    {
-      "hora": "09:45",
-      "ativ": "Brunch Fitness",
-      "resp": "",
-      "local": "",
-      "notas": ""
-    },
-    {
-      "hora": "10:30",
-      "ativ": "Apresentacao Wilson",
-      "resp": "",
-      "local": "",
-      "notas": ""
-    },
-    {
-      "hora": "11:00",
-      "ativ": "Networking",
-      "resp": "",
-      "local": "",
-      "notas": ""
-    },
-    {
-      "hora": "12:00",
-      "ativ": "Encerramento",
+      "hora": "08:15",
+      "ativ": "Café da Manhã",
       "resp": "",
       "local": "",
       "notas": ""
@@ -238,7 +226,7 @@
       "contra": "",
       "resp": "",
       "contato": "",
-      "status": "Em negociacao"
+      "status": "Em negociação"
     }
   ]
 }
