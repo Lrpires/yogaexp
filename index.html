@@ -238,24 +238,6 @@
   </div>
 </div>
 
-<!-- ════ TELA DE TOKEN ════ -->
-<div class="token-screen" id="tokenScreen" style="display:none">
-  <div class="token-box">
-    <h2>🔑 Configure o Token do GitHub</h2>
-    <p>Para salvar os dados no GitHub, você precisa de um token de acesso pessoal. Ele fica armazenado <strong>somente neste navegador</strong> e nunca aparece no código público.</p>
-    <ol class="steps">
-      <li>Acesse <strong>github.com → Settings → Developer settings → Personal access tokens → Fine-grained tokens</strong></li>
-      <li>Clique em <strong>Generate new token</strong></li>
-      <li>Em <strong>Repository access</strong>, selecione "Only select repositories" e escolha <code>yogaexp</code></li>
-      <li>Em <strong>Permissions → Contents</strong>, selecione <strong>Read and write</strong></li>
-      <li>Gere o token, copie e cole abaixo:</li>
-    </ol>
-    <div class="token-row">
-      <input id="tokenInput" type="password" placeholder="github_pat_...">
-      <button class="btn btn-primary" onclick="saveToken()">Salvar e entrar</button>
-    </div>
-  </div>
-</div>
 
 <!-- ════ APLICATIVO ════ -->
 <div class="app" id="app">
@@ -397,10 +379,11 @@
 // ════════════════════════════════════════
 //  CONFIG
 // ════════════════════════════════════════
-var GITHUB_USER  = 'lrpires';
-var GITHUB_REPO  = 'yogaexp';
-var GITHUB_FILE  = 'data.json';
+var GITHUB_USER   = 'lrpires';
+var GITHUB_REPO   = 'yogaexp';
+var GITHUB_FILE   = 'data.json';
 var GITHUB_BRANCH = 'main';
+var GITHUB_TOKEN  = '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';
 var PASSWORD_HASH = '743772463770ad60427d18abe6712873a548504279228bbc8071634bfc75a07a';
 
 var RAW_URL = 'https://raw.githubusercontent.com/' + GITHUB_USER + '/' + GITHUB_REPO + '/' + GITHUB_BRANCH + '/' + GITHUB_FILE;
@@ -430,19 +413,6 @@ async function doLogin() {
 
 function afterLogin() {
   document.getElementById('loginScreen').style.display = 'none';
-  var token = localStorage.getItem('yogaGhToken');
-  if (token) {
-    showApp();
-  } else {
-    document.getElementById('tokenScreen').style.display = 'flex';
-  }
-}
-
-function saveToken() {
-  var t = document.getElementById('tokenInput').value.trim();
-  if (!t) { alert('Cole o token antes de continuar.'); return; }
-  localStorage.setItem('yogaGhToken', t);
-  document.getElementById('tokenScreen').style.display = 'none';
   showApp();
 }
 
@@ -646,9 +616,6 @@ function collectForms() {
 
 async function triggerSave() {
   collectForms();
-  var token = localStorage.getItem('yogaGhToken');
-  if (!token) { setBadge('err', 'Token nao configurado'); return; }
-
   setBadge('saving', 'Salvando...');
   try {
     var content = btoa(unescape(encodeURIComponent(JSON.stringify(DB, null, 2))));
@@ -657,7 +624,7 @@ async function triggerSave() {
 
     var r = await fetch(API_URL, {
       method: 'PUT',
-      headers: { Authorization: 'token ' + token, Accept: 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
+      headers: { Authorization: 'token ' + GITHUB_TOKEN, Accept: 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
       body: JSON.stringify(body)
     });
     var json = await r.json();
@@ -677,8 +644,7 @@ async function loadFromGitHub() {
   setBadge('saving', 'Carregando...');
   try {
     var token = localStorage.getItem('yogaGhToken');
-    var headers = { Accept: 'application/vnd.github.v3+json' };
-    if (token) headers.Authorization = 'token ' + token;
+    var headers = { Accept: 'application/vnd.github.v3+json', Authorization: 'token ' + GITHUB_TOKEN };
 
     var r = await fetch(API_URL + '?ref=' + GITHUB_BRANCH + '&t=' + Date.now(), { headers: headers });
     if (r.status === 404) {
