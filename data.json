@@ -7,7 +7,8 @@
     "data": "",
     "local": "",
     "responsavel": "Renato",
-    "obs": ""
+    "obs": "",
+    "resp": ""
   },
   "met": {
     "presentes": "",
@@ -20,7 +21,10 @@
     "pedidos": "",
     "faturamento": "",
     "avaliacao": "",
-    "aprendizados": ""
+    "aprendizados": "",
+    "fat": "",
+    "aval": "",
+    "aprend": ""
   },
   "orc": [
     {
@@ -165,11 +169,7 @@
       "done": false
     },
     {
-      "text": "Contratar fotógrafo",
-      "done": false
-    },
-    {
-      "text": "Contratar videomaker",
+      "text": "Contratar fotos/video",
       "done": false
     },
     {
