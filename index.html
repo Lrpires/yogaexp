@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yoga Experience | Malhas Wilson</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #6366f1;
+      --primary-dark: #4f46e5;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --bg: #f0f2f7;
+      --card: #ffffff;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #e2e8f0;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ─── HEADER ─── */
+    .header {
+      background: linear-gradient(135deg, #1e1b4b 0%, #312e81 60%, #4338ca 100%);
+      color: white;
+      padding: 20px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .header-title h1 { font-size: 20px; font-weight: 700; }
+    .header-title p  { font-size: 12px; opacity: 0.65; margin-top: 3px; }
+
+    .header-actions { display: flex; gap: 8px; align-items: center; flex-shrink: 0; }
+
+    .save-badge {
+      font-size: 12px;
+      padding: 5px 12px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.12);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+    .save-badge.ok      { background: rgba(16,185,129,0.28); }
+    .save-badge.saving  { background: rgba(245,158,11,0.28); }
+    .save-badge.err     { background: rgba(239,68,68,0.28);  }
+
+    /* ─── CONFIG BANNER ─── */
+    .config-banner {
+      background: linear-gradient(90deg, #fef9c3, #fef3c7);
+      border-bottom: 1px solid #fde68a;
+      padding: 10px 32px;
+      font-size: 12px;
+      color: #78350f;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .config-banner strong { white-space: nowrap; }
+    .config-banner input {
+      flex: 1;
+      min-width: 220px;
+      max-width: 480px;
+      padding: 6px 10px;
+      border: 1px solid #f59e0b;
+      border-radius: 6px;
+      font-size: 12px;
+      font-family: 'Inter', sans-serif;
+      background: white;
+    }
+    .config-banner.connected {
+      background: linear-gradient(90deg, #d1fae5, #a7f3d0);
+      border-bottom-color: #6ee7b7;
+      color: #065f46;
+    }
+
+    /* ─── TABS ─── */
+    .tabs-bar {
+      background: white;
+      border-bottom: 1px solid var(--border);
+      padding: 0 32px;
+      display: flex;
+      gap: 2px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .tabs-bar::-webkit-scrollbar { display: none; }
+
+    .tab-btn {
+      padding: 14px 16px;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+      border-bottom: 3px solid transparent;
+      white-space: nowrap;
+      transition: all 0.18s;
+      font-family: 'Inter', sans-serif;
+    }
+    .tab-btn:hover  { color: var(--primary); background: #f5f6ff; }
+    .tab-btn.active { color: var(--primary); border-bottom-color: var(--primary); }
+
+    /* ─── PAGE CONTENT ─── */
+    .page { display: none; padding: 28px 32px; max-width: 1200px; margin: 0 auto; }
+    .page.active { display: block; }
+
+    /* ─── METRIC CARDS ─── */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .mc {
+      background: white;
+      border-radius: 14px;
+      padding: 18px 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,.05), 0 4px 14px rgba(0,0,0,.06);
+      border-left: 4px solid var(--primary);
+    }
+    .mc:nth-child(2) { border-left-color: #f59e0b; }
+    .mc:nth-child(3) { border-left-color: #10b981; }
+    .mc:nth-child(4) { border-left-color: #ec4899; }
+    .mc-label { font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 8px; }
+    .mc-value { font-size: 30px; font-weight: 700; }
+
+    /* ─── CARD ─── */
+    .card {
+      background: white;
+      border-radius: 14px;
+      padding: 22px 24px;
+      margin-bottom: 22px;
+      box-shadow: 0 1px 3px rgba(0,0,0,.05), 0 4px 14px rgba(0,0,0,.06);
+    }
+    .card-hd {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .card-hd h2 { font-size: 15px; font-weight: 600; }
+
+    /* ─── FORM GRID (key-value) ─── */
+    .kv-grid {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .kv-row { display: grid; grid-template-columns: 170px 1fr; border-bottom: 1px solid var(--border); }
+    .kv-row:last-child { border-bottom: none; }
+    .kv-label {
+      padding: 10px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--muted);
+      background: #f8fafc;
+      border-right: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+    }
+    .kv-val { padding: 4px 6px; display: flex; align-items: center; }
+
+    /* ─── TABLE ─── */
+    .tbl-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 10px; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    thead th {
+      background: #f8fafc;
+      padding: 10px 12px;
+      text-align: left;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    tbody td { padding: 6px 8px; border-bottom: 1px solid #f1f5f9; }
+    tbody tr:last-child td { border-bottom: none; }
+    tbody tr:hover { background: #fafbff; }
+
+    /* ─── INPUTS ─── */
+    .fi {
+      width: 100%;
+      padding: 7px 9px;
+      border: 1px solid transparent;
+      border-radius: 6px;
+      font-size: 13px;
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: transparent;
+      transition: all .15s;
+    }
+    .fi:hover  { border-color: var(--border); background: #f8fafc; }
+    .fi:focus  { outline: none; border-color: var(--primary); background: white; box-shadow: 0 0 0 3px rgba(99,102,241,.1); }
+    textarea.fi { resize: vertical; min-height: 70px; }
+    select.fi { cursor: pointer; }
+
+    /* ─── BUTTONS ─── */
+    .btn {
+      padding: 8px 14px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      transition: all .15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      white-space: nowrap;
+    }
+    .btn-primary { background: var(--primary); color: white; }
+    .btn-primary:hover { background: var(--primary-dark); }
+    .btn-success { background: var(--success); color: white; }
+    .btn-success:hover { background: #059669; }
+    .btn-ghost   { background: #f1f5f9; color: var(--text); }
+    .btn-ghost:hover { background: #e2e8f0; }
+    .btn-del     { background: transparent; color: #cbd5e1; padding: 5px 7px; }
+    .btn-del:hover { color: var(--danger); background: #fff1f1; }
+    .btn-warn    { background: #f59e0b; color: white; }
+    .btn-warn:hover { background: #d97706; }
+
+    /* ─── BUDGET TOTAL ─── */
+    .budget-foot {
+      display: flex;
+      justify-content: flex-end;
+      padding: 12px 14px;
+      gap: 40px;
+      background: #f8fafc;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      font-weight: 600;
+      flex-wrap: wrap;
+    }
+
+    /* ─── CHECKLIST ─── */
+    .cl-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 2px;
+      border-bottom: 1px solid #f1f5f9;
+      transition: background .1s;
+    }
+    .cl-item:last-child { border-bottom: none; }
+    .cl-item input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--primary); cursor: pointer; flex-shrink: 0; }
+    .cl-text { flex: 1; }
+    .cl-item.done .cl-text input { text-decoration: line-through; color: var(--muted); }
+
+    /* ─── PROGRESS BAR ─── */
+    .progress-wrap { height: 6px; background: var(--border); border-radius: 99px; margin-bottom: 16px; overflow: hidden; }
+    .progress-bar  { height: 100%; background: var(--primary); border-radius: 99px; transition: width .4s; }
+
+    /* ─── SETUP MODAL ─── */
+    .modal-overlay {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,.45);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+    .modal-overlay.hidden { display: none; }
+    .modal {
+      background: white;
+      border-radius: 16px;
+      padding: 32px;
+      max-width: 560px;
+      width: 100%;
+      box-shadow: 0 20px 60px rgba(0,0,0,.25);
+    }
+    .modal h2 { font-size: 18px; margin-bottom: 6px; }
+    .modal p  { font-size: 13px; color: var(--muted); margin-bottom: 20px; line-height: 1.6; }
+    .steps { counter-reset: step; margin: 0 0 24px; padding: 0; list-style: none; }
+    .steps li {
+      counter-increment: step;
+      display: flex;
+      gap: 12px;
+      margin-bottom: 16px;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .steps li::before {
+      content: counter(step);
+      flex-shrink: 0;
+      width: 24px; height: 24px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .steps code {
+      background: #f1f5f9;
+      border-radius: 4px;
+      padding: 1px 6px;
+      font-size: 12px;
+      font-family: monospace;
+    }
+    .modal-url-row { display: flex; gap: 8px; margin-bottom: 12px; }
+    .modal-url-row input {
+      flex: 1;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 13px;
+      font-family: 'Inter', sans-serif;
+    }
+    .modal-url-row input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(99,102,241,.1); }
+    .modal-skip { font-size: 12px; color: var(--muted); text-align: center; cursor: pointer; text-decoration: underline; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 700px) {
+      .header { padding: 14px 16px; }
+      .tabs-bar, .page { padding-left: 16px; padding-right: 16px; }
+      .config-banner { padding: 10px 16px; }
+      .header-title h1 { font-size: 16px; }
+      .kv-row { grid-template-columns: 130px 1fr; }
+    }
+
+    /* ─── PRINT ─── */
+    @media print {
+      .header-actions, .config-banner, .tabs-bar, .btn, .modal-overlay { display: none !important; }
+      .page { display: block !important; padding: 0 !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Setup Modal -->
+<div class="modal-overlay" id="setupModal">
+  <div class="modal">
+    <h2>🔗 Conectar ao Google Sheets</h2>
+    <p>Para salvar todos os dados na nuvem e acessar de qualquer dispositivo, siga os passos abaixo para criar o backend no Google Apps Script.</p>
+    <ol class="steps">
+      <li>Abra <strong>Google Sheets</strong>, crie uma planilha nova e chame de <code>Yoga Experience</code>.</li>
+      <li>No menu, clique em <strong>Extensões → Apps Script</strong>.</li>
+      <li>Apague o código existente e cole todo o conteúdo do arquivo <code>apps-script-backend.gs</code> (que veio junto com este HTML).</li>
+      <li>Clique em <strong>Implantar → Nova implantação</strong> → Tipo: <em>App da Web</em> → Executar como: <em>Eu</em> → Acesso: <em>Qualquer pessoa</em> → <strong>Implantar</strong>.</li>
+      <li>Autorize o acesso quando solicitado, copie a <strong>URL da implantação</strong> e cole abaixo.</li>
+    </ol>
+    <div class="modal-url-row">
+      <input id="modalUrl" type="text" placeholder="https://script.google.com/macros/s/.../exec">
+      <button class="btn btn-success" onclick="connectFromModal()">✓ Conectar</button>
+    </div>
+    <div class="modal-skip" onclick="skipSetup()">Pular por agora (dados ficam só neste navegador)</div>
+  </div>
+</div>
+
+<!-- Header -->
+<div class="header">
+  <div class="header-title">
+    <h1>🧘 Yoga Experience · Malhas Wilson</h1>
+    <p>Planejamento Completo do Evento</p>
+  </div>
+  <div class="header-actions">
+    <div class="save-badge" id="saveBadge">⏳ Iniciando...</div>
+    <button class="btn btn-ghost" onclick="triggerSave()">💾 Salvar</button>
+    <button class="btn btn-ghost" onclick="window.print()">🖨 Imprimir</button>
+    <button class="btn btn-ghost" onclick="document.getElementById('setupModal').classList.remove('hidden')">⚙ Config</button>
+  </div>
+</div>
+
+<!-- Config Banner -->
+<div class="config-banner" id="configBanner">
+  <strong>⚙ Google Sheets URL:</strong>
+  <input id="urlInput" type="text" placeholder="https://script.google.com/macros/s/.../exec" oninput="onUrlChange()">
+  <button class="btn btn-warn" onclick="connectUrl()">Conectar</button>
+</div>
+
+<!-- Tabs -->
+<div class="tabs-bar">
+  <button class="tab-btn active" onclick="openTab(event,'t-dashboard')">📊 Dashboard</button>
+  <button class="tab-btn" onclick="openTab(event,'t-orcamento')">💰 Orçamento</button>
+  <button class="tab-btn" onclick="openTab(event,'t-convidadas')">👥 Convidadas</button>
+  <button class="tab-btn" onclick="openTab(event,'t-kits')">🎁 Kits</button>
+  <button class="tab-btn" onclick="openTab(event,'t-checklist')">✅ Checklist</button>
+  <button class="tab-btn" onclick="openTab(event,'t-cronograma')">🕐 Cronograma</button>
+  <button class="tab-btn" onclick="openTab(event,'t-parceiros')">🤝 Parceiros</button>
+  <button class="tab-btn" onclick="openTab(event,'t-metricas')">📈 Métricas</button>
+</div>
+
+<!-- ════════════════ DASHBOARD ════════════════ -->
+<div id="t-dashboard" class="page active">
+  <div class="metrics-grid">
+    <div class="mc"><div class="mc-label">Convidadas</div><div class="mc-value" id="m-convidadas">—</div></div>
+    <div class="mc"><div class="mc-label">Influenciadoras</div><div class="mc-value" id="m-influenc">—</div></div>
+    <div class="mc"><div class="mc-label">Kits preparados</div><div class="mc-value" id="m-kits">—</div></div>
+    <div class="mc"><div class="mc-label">Meta de Alcance</div><div class="mc-value" id="m-alcance">—</div></div>
+  </div>
+  <div class="card">
+    <div class="card-hd"><h2>Resumo do Evento</h2></div>
+    <div class="kv-grid">
+      <div class="kv-row"><div class="kv-label">Nome do evento</div><div class="kv-val"><input class="fi" data-sec="dash" data-key="nome" placeholder="Nome do evento"></div></div>
+      <div class="kv-row"><div class="kv-label">Data</div><div class="kv-val"><input class="fi" type="date" data-sec="dash" data-key="data"></div></div>
+      <div class="kv-row"><div class="kv-label">Local</div><div class="kv-val"><input class="fi" data-sec="dash" data-key="local" placeholder="Endereço / Espaço"></div></div>
+      <div class="kv-row"><div class="kv-label">Responsável</div><div class="kv-val"><input class="fi" data-sec="dash" data-key="responsavel" placeholder="Nome do organizador"></div></div>
+      <div class="kv-row"><div class="kv-label">Nº Influenciadoras</div><div class="kv-val"><input class="fi" type="number" data-sec="dash" data-key="nInfluenc" placeholder="Ex: 15"></div></div>
+      <div class="kv-row"><div class="kv-label">Meta de alcance</div><div class="kv-val"><input class="fi" data-sec="dash" data-key="alcance" placeholder="Ex: 300K"></div></div>
+      <div class="kv-row"><div class="kv-label">Objetivo</div><div class="kv-val"><textarea class="fi" data-sec="dash" data-key="objetivo" placeholder="Descreva o objetivo do evento..."></textarea></div></div>
+      <div class="kv-row"><div class="kv-label">Observações</div><div class="kv-val"><textarea class="fi" data-sec="dash" data-key="obs" placeholder="Anotações gerais..."></textarea></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════ ORÇAMENTO ════════════════ -->
+<div id="t-orcamento" class="page">
+  <div class="card">
+    <div class="card-hd">
+      <h2>Controle Financeiro</h2>
+      <button class="btn btn-primary" onclick="addRow('orc')">+ Adicionar item</button>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Item</th><th>Previsto (R$)</th><th>Real (R$)</th><th>Status</th><th>Notas</th><th></th></tr></thead>
+        <tbody id="orc-body"></tbody>
+      </table>
+      <div class="budget-foot">
+        <span>Previsto: <strong id="tot-prev">R$ 0,00</strong></span>
+        <span>Realizado: <strong id="tot-real">R$ 0,00</strong></span>
+        <span>Diferença: <strong id="tot-diff" style="color:var(--success)">R$ 0,00</strong></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════ CONVIDADAS ════════════════ -->
+<div id="t-convidadas" class="page">
+  <div class="card">
+    <div class="card-hd">
+      <h2>Lista de Convidadas</h2>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <span id="conv-count" style="font-size:12px;color:var(--muted);"></span>
+        <button class="btn btn-primary" onclick="addRow('conv')">+ Adicionar</button>
+      </div>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Nome</th><th>Empresa / Perfil</th><th>Instagram</th><th>Telefone</th><th>Confirmada?</th><th>Tipo</th><th></th></tr></thead>
+        <tbody id="conv-body"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════ KITS ════════════════ -->
+<div id="t-kits" class="page">
+  <div class="card">
+    <div class="card-hd">
+      <h2>Entrega de Kits</h2>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <span id="kits-count" style="font-size:12px;color:var(--muted);"></span>
+        <button class="btn btn-primary" onclick="addRow('kit')">+ Adicionar</button>
+      </div>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Nome</th><th>Tamanho</th><th>Entregue?</th><th>Data entrega</th><th>Observação</th><th></th></tr></thead>
+        <tbody id="kit-body"></tbody>
+      </table>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-hd">
+      <h2>Itens do Kit</h2>
+      <button class="btn btn-primary" onclick="addRow('kititem')">+ Adicionar item</button>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Item</th><th>Quantidade</th><th>Fornecedor</th><th></th></tr></thead>
+        <tbody id="kititem-body"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════ CHECKLIST ════════════════ -->
+<div id="t-checklist" class="page">
+  <div class="card">
+    <div class="card-hd">
+      <h2>Checklist do Evento</h2>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <span id="cl-prog" style="font-size:12px;color:var(--muted);">0 / 0</span>
+        <button class="btn btn-primary" onclick="addCheckItem()">+ Adicionar</button>
+      </div>
+    </div>
+    <div class="progress-wrap"><div class="progress-bar" id="cl-bar" style="width:0%"></div></div>
+    <div id="cl-list"></div>
+  </div>
+</div>
+
+<!-- ════════════════ CRONOGRAMA ════════════════ -->
+<div id="t-cronograma" class="page">
+  <div class="card">
+    <div class="card-hd">
+      <h2>Roteiro do Evento</h2>
+      <button class="btn btn-primary" onclick="addRow('cron')">+ Adicionar</button>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Horário</th><th>Atividade</th><th>Responsável</th><th>Local</th><th>Notas</th><th></th></tr></thead>
+        <tbody id="cron-body"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════ PARCEIROS ════════════════ -->
+<div id="t-parceiros" class="page">
+  <div class="card">
+    <div class="card-hd">
+      <h2>Parceiros e Patrocinadores</h2>
+      <button class="btn btn-primary" onclick="addRow('parc')">+ Adicionar</button>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Empresa</th><th>Contrapartida</th><th>Responsável</th><th>Contato</th><th>Status</th><th></th></tr></thead>
+        <tbody id="parc-body"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════ MÉTRICAS ════════════════ -->
+<div id="t-metricas" class="page">
+  <div class="card">
+    <div class="card-hd"><h2>Métricas Pós-Evento</h2></div>
+    <div class="kv-grid">
+      <div class="kv-row"><div class="kv-label">Convidadas presentes</div><div class="kv-val"><input class="fi" type="number" data-sec="met" data-key="presentes" placeholder="Ex: 38"></div></div>
+      <div class="kv-row"><div class="kv-label">Stories publicados</div><div class="kv-val"><input class="fi" type="number" data-sec="met" data-key="stories" placeholder="Ex: 120"></div></div>
+      <div class="kv-row"><div class="kv-label">Reels publicados</div><div class="kv-val"><input class="fi" type="number" data-sec="met" data-key="reels" placeholder="Ex: 25"></div></div>
+      <div class="kv-row"><div class="kv-label">Alcance estimado</div><div class="kv-val"><input class="fi" data-sec="met" data-key="alcanceReal" placeholder="Ex: 380K"></div></div>
+      <div class="kv-row"><div class="kv-label">Impressões totais</div><div class="kv-val"><input class="fi" data-sec="met" data-key="impressoes" placeholder="Ex: 500K"></div></div>
+      <div class="kv-row"><div class="kv-label">Leads gerados</div><div class="kv-val"><input class="fi" type="number" data-sec="met" data-key="leads" placeholder="Ex: 15"></div></div>
+      <div class="kv-row"><div class="kv-label">Marcas interessadas</div><div class="kv-val"><input class="fi" type="number" data-sec="met" data-key="marcas" placeholder="Ex: 8"></div></div>
+      <div class="kv-row"><div class="kv-label">Pedidos gerados</div><div class="kv-val"><input class="fi" type="number" data-sec="met" data-key="pedidos" placeholder="Ex: 12"></div></div>
+      <div class="kv-row"><div class="kv-label">Faturamento gerado</div><div class="kv-val"><input class="fi" data-sec="met" data-key="faturamento" placeholder="Ex: R$ 15.000"></div></div>
+      <div class="kv-row"><div class="kv-label">Avaliação geral</div><div class="kv-val">
+        <select class="fi" data-sec="met" data-key="avaliacao">
+          <option value="">— Selecione —</option>
+          <option>⭐ Ruim</option><option>⭐⭐ Regular</option>
+          <option>⭐⭐⭐ Bom</option><option>⭐⭐⭐⭐ Ótimo</option>
+          <option>⭐⭐⭐⭐⭐ Excelente</option>
+        </select>
+      </div></div>
+      <div class="kv-row"><div class="kv-label">Aprendizados</div><div class="kv-val"><textarea class="fi" data-sec="met" data-key="aprendizados" placeholder="O que funcionou bem / o que melhorar..."></textarea></div></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ══════════════════════════════════════════════════
+//  STATE
+// ══════════════════════════════════════════════════
+let DB = {
+  dash: { nome: 'Yoga Experience Malhas Wilson', nInfluenc: '15', alcance: '300K',
+          objetivo: 'Apresentar as malhas da Wilson para marcas fitness e influenciadoras.' },
+  met:  {},
+  orc: [
+    {item:'Locação Espaço',   prev:'', real:'', status:'Pendente', notas:''},
+    {item:'Instrutora Yoga',  prev:'', real:'', status:'Pendente', notas:''},
+    {item:'Fotógrafo',        prev:'', real:'', status:'Pendente', notas:''},
+    {item:'Videomaker',       prev:'', real:'', status:'Pendente', notas:''},
+    {item:'Brunch',           prev:'', real:'', status:'Pendente', notas:''},
+    {item:'Kits',             prev:'', real:'', status:'Pendente', notas:''},
+    {item:'Brindes',          prev:'', real:'', status:'Pendente', notas:''},
+    {item:'Backdrop',         prev:'', real:'', status:'Pendente', notas:''},
+  ],
+  conv: [{nome:'',empresa:'',instagram:'',tel:'',confirm:'Pendente',tipo:'Convidada'}],
+  kit:  [{nome:'',tamanho:'M',entregue:'Não',data:'',obs:''}],
+  kititem:[
+    {item:'Ecobag',     qtd:'50', fornec:''},
+    {item:'Garrafa',    qtd:'50', fornec:''},
+    {item:'Top Fitness',qtd:'50', fornec:''},
+    {item:'Legging',    qtd:'50', fornec:''},
+    {item:'Toalha',     qtd:'50', fornec:''},
+  ],
+  checklist:[
+    {text:'Definir local',            done:false},
+    {text:'Confirmar instrutora',     done:false},
+    {text:'Contratar fotógrafo',      done:false},
+    {text:'Contratar videomaker',     done:false},
+    {text:'Separar kits',             done:false},
+    {text:'Confirmar brunch',         done:false},
+    {text:'Montar backdrop',          done:false},
+    {text:'Imprimir lista check-in',  done:false},
+    {text:'Confirmar influenciadoras',done:false},
+    {text:'Conferir brindes',         done:false},
+  ],
+  cron:[
+    {hora:'07:00',ativ:'Recepção',           resp:'',local:'',notas:''},
+    {hora:'07:30',ativ:'Entrega dos Kits',   resp:'',local:'',notas:''},
+    {hora:'08:00',ativ:'Aulão de Yoga',      resp:'',local:'',notas:''},
+    {hora:'09:00',ativ:'Alongamento',        resp:'',local:'',notas:''},
+    {hora:'09:15',ativ:'Fotos Oficiais',     resp:'',local:'',notas:''},
+    {hora:'09:45',ativ:'Brunch Fitness',     resp:'',local:'',notas:''},
+    {hora:'10:30',ativ:'Apresentação Wilson',resp:'',local:'',notas:''},
+    {hora:'11:00',ativ:'Networking',         resp:'',local:'',notas:''},
+    {hora:'12:00',ativ:'Encerramento',       resp:'',local:'',notas:''},
+  ],
+  parc:[{empresa:'',contra:'',resp:'',contato:'',status:'Em negociação'}],
+};
+
+// ══════════════════════════════════════════════════
+//  COLUMN DEFS
+// ══════════════════════════════════════════════════
+const DEFS = {
+  orc: [
+    {k:'item',  t:'text',   ph:'Nome do item'},
+    {k:'prev',  t:'number', ph:'0.00'},
+    {k:'real',  t:'number', ph:'0.00'},
+    {k:'status',t:'sel',    opts:['Pendente','Pago','Cancelado']},
+    {k:'notas', t:'text',   ph:'Observação'},
+  ],
+  conv: [
+    {k:'nome',    t:'text', ph:'Nome completo'},
+    {k:'empresa', t:'text', ph:'Empresa ou @perfil'},
+    {k:'instagram',t:'text',ph:'@usuario'},
+    {k:'tel',     t:'text', ph:'(00) 00000-0000'},
+    {k:'confirm', t:'sel',  opts:['Pendente','Confirmada','Recusou','Lista espera']},
+    {k:'tipo',    t:'sel',  opts:['Convidada','Influenciadora','Marca','Imprensa']},
+  ],
+  kit: [
+    {k:'nome',    t:'text', ph:'Nome'},
+    {k:'tamanho', t:'sel',  opts:['PP','P','M','G','GG','Único']},
+    {k:'entregue',t:'sel',  opts:['Não','Sim']},
+    {k:'data',    t:'date'},
+    {k:'obs',     t:'text', ph:'Observação'},
+  ],
+  kititem:[
+    {k:'item',   t:'text',   ph:'Nome do item'},
+    {k:'qtd',    t:'number', ph:'0'},
+    {k:'fornec', t:'text',   ph:'Fornecedor'},
+  ],
+  cron:[
+    {k:'hora',  t:'time'},
+    {k:'ativ',  t:'text', ph:'Atividade'},
+    {k:'resp',  t:'text', ph:'Responsável'},
+    {k:'local', t:'text', ph:'Local'},
+    {k:'notas', t:'text', ph:'Notas'},
+  ],
+  parc:[
+    {k:'empresa', t:'text', ph:'Nome da empresa'},
+    {k:'contra',  t:'text', ph:'O que oferecem?'},
+    {k:'resp',    t:'text', ph:'Responsável'},
+    {k:'contato', t:'text', ph:'E-mail / telefone'},
+    {k:'status',  t:'sel',  opts:['Em negociação','Confirmado','Recusou']},
+  ],
+};
+
+// ══════════════════════════════════════════════════
+//  RENDER TABLES
+// ══════════════════════════════════════════════════
+function renderTable(key) {
+  const tbody = document.getElementById(key + '-body');
+  if (!tbody) return;
+  tbody.innerHTML = '';
+  (DB[key] || []).forEach((row, ri) => {
+    const tr = document.createElement('tr');
+    DEFS[key].forEach(col => {
+      const td = document.createElement('td');
+      let el;
+      if (col.t === 'sel') {
+        el = document.createElement('select');
+        el.className = 'fi';
+        col.opts.forEach(o => {
+          const opt = document.createElement('option');
+          opt.value = opt.textContent = o;
+          if (row[col.k] === o) opt.selected = true;
+          el.appendChild(opt);
+        });
+      } else {
+        el = document.createElement('input');
+        el.type = col.t || 'text';
+        el.className = 'fi';
+        el.placeholder = col.ph || '';
+        el.value = row[col.k] || '';
+      }
+      el.addEventListener('input', () => {
+        DB[key][ri][col.k] = el.value;
+        if (key === 'orc') updateBudget();
+        if (key === 'conv') updateConvCount();
+        if (key === 'kit') updateKitsCount();
+        scheduleSave();
+      });
+      td.appendChild(el);
+      tr.appendChild(td);
+    });
+    // delete button
+    const tdDel = document.createElement('td');
+    const delBtn = document.createElement('button');
+    delBtn.className = 'btn btn-del';
+    delBtn.title = 'Remover linha';
+    delBtn.textContent = '✕';
+    delBtn.onclick = () => {
+      DB[key].splice(ri, 1);
+      renderTable(key);
+      if (key === 'orc') updateBudget();
+      if (key === 'conv') updateConvCount();
+      if (key === 'kit') updateKitsCount();
+      scheduleSave();
+    };
+    tdDel.appendChild(delBtn);
+    tr.appendChild(tdDel);
+    tbody.appendChild(tr);
+  });
+}
+
+function addRow(key) {
+  const blank = {};
+  DEFS[key].forEach(c => blank[c.k] = c.t === 'sel' ? c.opts[0] : '');
+  DB[key].push(blank);
+  renderTable(key);
+  scheduleSave();
+}
+
+// ══════════════════════════════════════════════════
+//  CHECKLIST
+// ══════════════════════════════════════════════════
+function renderChecklist() {
+  const cont = document.getElementById('cl-list');
+  cont.innerHTML = '';
+  let done = 0;
+  DB.checklist.forEach((item, i) => {
+    if (item.done) done++;
+    const div = document.createElement('div');
+    div.className = 'cl-item' + (item.done ? ' done' : '');
+
+    const cb = document.createElement('input');
+    cb.type = 'checkbox';
+    cb.checked = item.done;
+    cb.onchange = () => {
+      DB.checklist[i].done = cb.checked;
+      renderChecklist();
+      scheduleSave();
+    };
+
+    const wrap = document.createElement('div');
+    wrap.className = 'cl-text';
+    const inp = document.createElement('input');
+    inp.className = 'fi';
+    inp.value = item.text;
+    inp.placeholder = 'Descrição da tarefa...';
+    inp.oninput = () => { DB.checklist[i].text = inp.value; scheduleSave(); };
+    wrap.appendChild(inp);
+
+    const delBtn = document.createElement('button');
+    delBtn.className = 'btn btn-del';
+    delBtn.textContent = '✕';
+    delBtn.onclick = () => { DB.checklist.splice(i, 1); renderChecklist(); scheduleSave(); };
+
+    div.appendChild(cb);
+    div.appendChild(wrap);
+    div.appendChild(delBtn);
+    cont.appendChild(div);
+  });
+  const pct = DB.checklist.length ? Math.round(done / DB.checklist.length * 100) : 0;
+  document.getElementById('cl-bar').style.width = pct + '%';
+  document.getElementById('cl-prog').textContent = `${done} / ${DB.checklist.length} concluídos (${pct}%)`;
+}
+
+function addCheckItem() {
+  DB.checklist.push({ text: '', done: false });
+  renderChecklist();
+  scheduleSave();
+}
+
+// ══════════════════════════════════════════════════
+//  KV FORMS (dashboard + métricas)
+// ══════════════════════════════════════════════════
+function bindKvInputs() {
+  document.querySelectorAll('[data-sec]').forEach(el => {
+    const sec = el.getAttribute('data-sec');
+    const key = el.getAttribute('data-key');
+    el.addEventListener('input', () => {
+      DB[sec][key] = el.value;
+      if (sec === 'dash') updateDashMetrics();
+      scheduleSave();
+    });
+  });
+}
+
+function populateKv(sec) {
+  document.querySelectorAll(`[data-sec="${sec}"]`).forEach(el => {
+    const key = el.getAttribute('data-key');
+    if (DB[sec][key] !== undefined) el.value = DB[sec][key];
+  });
+}
+
+// ══════════════════════════════════════════════════
+//  COMPUTED METRICS
+// ══════════════════════════════════════════════════
+function updateDashMetrics() {
+  document.getElementById('m-convidadas').textContent = DB.conv.length || 0;
+  document.getElementById('m-influenc').textContent   = DB.dash.nInfluenc || '—';
+  document.getElementById('m-kits').textContent       = DB.kit.length || 0;
+  document.getElementById('m-alcance').textContent    = DB.dash.alcance || '—';
+}
+
+function updateBudget() {
+  let prev = 0, real = 0;
+  DB.orc.forEach(r => { prev += parseFloat(r.prev) || 0; real += parseFloat(r.real) || 0; });
+  const fmt = v => 'R$ ' + v.toLocaleString('pt-BR', {minimumFractionDigits:2});
+  document.getElementById('tot-prev').textContent = fmt(prev);
+  document.getElementById('tot-real').textContent = fmt(real);
+  const diff = prev - real;
+  const diffEl = document.getElementById('tot-diff');
+  diffEl.textContent = fmt(Math.abs(diff));
+  diffEl.style.color = diff >= 0 ? 'var(--success)' : 'var(--danger)';
+}
+
+function updateConvCount() {
+  const conf = DB.conv.filter(r => r.confirm === 'Confirmada').length;
+  document.getElementById('conv-count').textContent =
+    `${DB.conv.length} cadastradas · ${conf} confirmadas`;
+}
+
+function updateKitsCount() {
+  const entregues = DB.kit.filter(r => r.entregue === 'Sim').length;
+  document.getElementById('kits-count').textContent =
+    `${DB.kit.length} pessoas · ${entregues} kits entregues`;
+}
+
+// ══════════════════════════════════════════════════
+//  RENDER ALL
+// ══════════════════════════════════════════════════
+function renderAll() {
+  populateKv('dash');
+  populateKv('met');
+  Object.keys(DEFS).forEach(k => renderTable(k));
+  renderChecklist();
+  updateDashMetrics();
+  updateBudget();
+  updateConvCount();
+  updateKitsCount();
+}
+
+// ══════════════════════════════════════════════════
+//  SAVE / LOAD — Google Sheets via Apps Script
+// ══════════════════════════════════════════════════
+let SCRIPT_URL = '';
+let saveTimer;
+
+function setBadge(state, txt) {
+  const el = document.getElementById('saveBadge');
+  el.className = 'save-badge ' + state;
+  el.textContent = txt;
+}
+
+function scheduleSave() {
+  clearTimeout(saveTimer);
+  setBadge('saving', '⏳ Aguardando...');
+  saveTimer = setTimeout(triggerSave, 1800);
+}
+
+async function triggerSave() {
+  // Sync KV form values before saving
+  document.querySelectorAll('[data-sec]').forEach(el => {
+    DB[el.getAttribute('data-sec')][el.getAttribute('data-key')] = el.value;
+  });
+
+  // Always save locally as backup
+  try { localStorage.setItem('yogaDB', JSON.stringify(DB)); } catch(e) {}
+
+  if (!SCRIPT_URL) {
+    setBadge('saving', '💾 Salvo localmente');
+    return;
+  }
+
+  setBadge('saving', '☁ Salvando...');
+  try {
+    const r = await fetch(SCRIPT_URL, {
+      method: 'POST',
+      body: JSON.stringify(DB),
+      headers: { 'Content-Type': 'text/plain' }
+    });
+    const json = await r.json();
+    if (json.success) setBadge('ok', '✓ Salvo no Sheets');
+    else throw new Error(json.error);
+  } catch(e) {
+    setBadge('err', '⚠ Erro ao salvar');
+    console.error(e);
+  }
+}
+
+async function loadFromSheets(url) {
+  if (!url) return false;
+  setBadge('saving', '🔄 Conectando...');
+  try {
+    const r = await fetch(url + '?t=' + Date.now());
+    const text = await r.text();
+    const parsed = JSON.parse(text);
+    if (parsed && typeof parsed === 'object' && Object.keys(parsed).length > 0) {
+      // Deep merge to keep new keys from defaults
+      Object.keys(parsed).forEach(k => { DB[k] = parsed[k]; });
+      setBadge('ok', '✓ Conectado ao Sheets');
+      return true;
+    }
+    return false;
+  } catch(e) {
+    setBadge('err', '⚠ Erro de conexão');
+    console.error(e);
+    return false;
+  }
+}
+
+// ══════════════════════════════════════════════════
+//  URL CONFIG
+// ══════════════════════════════════════════════════
+function onUrlChange() {
+  SCRIPT_URL = document.getElementById('urlInput').value.trim();
+  localStorage.setItem('yogaScriptUrl', SCRIPT_URL);
+}
+
+async function connectUrl() {
+  SCRIPT_URL = document.getElementById('urlInput').value.trim();
+  localStorage.setItem('yogaScriptUrl', SCRIPT_URL);
+  if (!SCRIPT_URL) { alert('Cole a URL do Apps Script antes.'); return; }
+  const ok = await loadFromSheets(SCRIPT_URL);
+  if (ok) {
+    renderAll();
+    document.getElementById('configBanner').classList.add('connected');
+    document.getElementById('configBanner').querySelector('strong').textContent = '✓ Conectado:';
+  } else {
+    // First time — push defaults to sheet
+    await triggerSave();
+  }
+}
+
+async function connectFromModal() {
+  const url = document.getElementById('modalUrl').value.trim();
+  document.getElementById('urlInput').value = url;
+  SCRIPT_URL = url;
+  localStorage.setItem('yogaScriptUrl', url);
+  document.getElementById('setupModal').classList.add('hidden');
+  await connectUrl();
+}
+
+function skipSetup() {
+  document.getElementById('setupModal').classList.add('hidden');
+  setBadge('saving', '💾 Modo local');
+}
+
+// ══════════════════════════════════════════════════
+//  TABS
+// ══════════════════════════════════════════════════
+function openTab(e, id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  e.currentTarget.classList.add('active');
+}
+
+// ══════════════════════════════════════════════════
+//  INIT
+// ══════════════════════════════════════════════════
+(async function init() {
+  // Load local backup
+  try {
+    const local = localStorage.getItem('yogaDB');
+    if (local) {
+      const parsed = JSON.parse(local);
+      Object.keys(parsed).forEach(k => { DB[k] = parsed[k]; });
+    }
+  } catch(e) {}
+
+  // Check for saved URL
+  const savedUrl = localStorage.getItem('yogaScriptUrl') || '';
+  if (savedUrl) {
+    SCRIPT_URL = savedUrl;
+    document.getElementById('urlInput').value = savedUrl;
+    document.getElementById('modalUrl').value  = savedUrl;
+    const ok = await loadFromSheets(savedUrl);
+    if (ok) {
+      document.getElementById('configBanner').classList.add('connected');
+      document.getElementById('configBanner').querySelector('strong').textContent = '✓ Conectado:';
+      document.getElementById('setupModal').classList.add('hidden');
+    }
+  } else {
+    setBadge('saving', '💾 Modo local');
+  }
+
+  // Bind KV inputs after rendering
+  bindKvInputs();
+  renderAll();
+})();
+</script>
+</body>
+</html>
