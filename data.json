@@ -1,0 +1,244 @@
+{
+  "dash": {
+    "nome": "",
+    "nInfluenc": "",
+    "alcance": "",
+    "objetivo": "",
+    "data": "",
+    "local": "",
+    "resp": "",
+    "obs": ""
+  },
+  "met": {
+    "presentes": "",
+    "stories": "",
+    "reels": "",
+    "alcanceReal": "",
+    "leads": "",
+    "marcas": "",
+    "pedidos": "",
+    "fat": "",
+    "aval": "",
+    "aprend": ""
+  },
+  "orc": [
+    {
+      "item": "Locacao Espaco",
+      "prev": "",
+      "real": "",
+      "status": "Pendente",
+      "notas": ""
+    },
+    {
+      "item": "Instrutora Yoga",
+      "prev": "",
+      "real": "",
+      "status": "Pendente",
+      "notas": ""
+    },
+    {
+      "item": "Fotografo",
+      "prev": "",
+      "real": "",
+      "status": "Pendente",
+      "notas": ""
+    },
+    {
+      "item": "Videomaker",
+      "prev": "",
+      "real": "",
+      "status": "Pendente",
+      "notas": ""
+    },
+    {
+      "item": "Brunch",
+      "prev": "",
+      "real": "",
+      "status": "Pendente",
+      "notas": ""
+    },
+    {
+      "item": "Kits",
+      "prev": "",
+      "real": "",
+      "status": "Pendente",
+      "notas": ""
+    },
+    {
+      "item": "Brindes",
+      "prev": "",
+      "real": "",
+      "status": "Pendente",
+      "notas": ""
+    },
+    {
+      "item": "Backdrop",
+      "prev": "",
+      "real": "",
+      "status": "Pendente",
+      "notas": ""
+    }
+  ],
+  "conv": [
+    {
+      "nome": "",
+      "empresa": "",
+      "instagram": "",
+      "tel": "",
+      "confirm": "Pendente",
+      "tipo": "Convidada"
+    }
+  ],
+  "kit": [
+    {
+      "nome": "",
+      "tamanho": "M",
+      "entregue": "Nao",
+      "data": "",
+      "obs": ""
+    }
+  ],
+  "kititem": [
+    {
+      "item": "Ecobag",
+      "qtd": "50",
+      "fornec": ""
+    },
+    {
+      "item": "Garrafa",
+      "qtd": "50",
+      "fornec": ""
+    },
+    {
+      "item": "Top Fitness",
+      "qtd": "50",
+      "fornec": ""
+    },
+    {
+      "item": "Legging",
+      "qtd": "50",
+      "fornec": ""
+    },
+    {
+      "item": "Toalha",
+      "qtd": "50",
+      "fornec": ""
+    }
+  ],
+  "checklist": [
+    {
+      "text": "Definir local",
+      "done": false
+    },
+    {
+      "text": "Confirmar instrutora",
+      "done": false
+    },
+    {
+      "text": "Contratar fotografo",
+      "done": false
+    },
+    {
+      "text": "Contratar videomaker",
+      "done": false
+    },
+    {
+      "text": "Separar kits",
+      "done": false
+    },
+    {
+      "text": "Confirmar brunch",
+      "done": false
+    },
+    {
+      "text": "Montar backdrop",
+      "done": false
+    },
+    {
+      "text": "Imprimir lista check-in",
+      "done": false
+    },
+    {
+      "text": "Confirmar influenciadoras",
+      "done": false
+    },
+    {
+      "text": "Conferir brindes",
+      "done": false
+    }
+  ],
+  "cron": [
+    {
+      "hora": "07:00",
+      "ativ": "Recepcao",
+      "resp": "",
+      "local": "",
+      "notas": ""
+    },
+    {
+      "hora": "07:30",
+      "ativ": "Entrega dos Kits",
+      "resp": "",
+      "local": "",
+      "notas": ""
+    },
+    {
+      "hora": "08:00",
+      "ativ": "Aulao de Yoga",
+      "resp": "",
+      "local": "",
+      "notas": ""
+    },
+    {
+      "hora": "09:00",
+      "ativ": "Alongamento",
+      "resp": "",
+      "local": "",
+      "notas": ""
+    },
+    {
+      "hora": "09:15",
+      "ativ": "Fotos Oficiais",
+      "resp": "",
+      "local": "",
+      "notas": ""
+    },
+    {
+      "hora": "09:45",
+      "ativ": "Brunch Fitness",
+      "resp": "",
+      "local": "",
+      "notas": ""
+    },
+    {
+      "hora": "10:30",
+      "ativ": "Apresentacao Wilson",
+      "resp": "",
+      "local": "",
+      "notas": ""
+    },
+    {
+      "hora": "11:00",
+      "ativ": "Networking",
+      "resp": "",
+      "local": "",
+      "notas": ""
+    },
+    {
+      "hora": "12:00",
+      "ativ": "Encerramento",
+      "resp": "",
+      "local": "",
+      "notas": ""
+    }
+  ],
+  "parc": [
+    {
+      "empresa": "",
+      "contra": "",
+      "resp": "",
+      "contato": "",
+      "status": "Em negociacao"
+    }
+  ]
+}
