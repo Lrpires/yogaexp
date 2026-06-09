@@ -242,14 +242,8 @@
 
 <script>
 // ── CONFIG ──────────────────────────────────────────────
-var GH_USER   = 'lrpires';
-var GH_REPO   = 'yogaexp';
-var GH_FILE   = 'data.json';
-var GH_BRANCH = 'main';
-var GH_TOKEN  = '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';
-var PWD_HASH  = '743772463770ad60427d18abe6712873a548504279228bbc8071634bfc75a07a';
-
-var API_URL = 'https://api.github.com/repos/' + GH_USER + '/' + GH_REPO + '/contents/' + GH_FILE;
+var WORKER_URL = 'https://yoga-worker.renato-893.workers.dev';
+var PWD_HASH   = '743772463770ad60427d18abe6712873a548504279228bbc8071634bfc75a07a';
 
 // ── LOGIN ────────────────────────────────────────────────
 async function hashStr(s) {
@@ -450,9 +444,9 @@ async function triggerSave(){
   collectForms(); setBadge('saving','Salvando...');
   try {
     var content=btoa(unescape(encodeURIComponent(JSON.stringify(DB,null,2))));
-    var body={ message:'Update '+new Date().toLocaleString('pt-BR'), content:content, branch:GH_BRANCH };
+    var body={ message:'Update '+new Date().toLocaleString('pt-BR'), content:content, branch:'main' };
     if(currentSha) body.sha=currentSha;
-    var r=await fetch(API_URL,{ method:'PUT', headers:{Authorization:'token '+GH_TOKEN, Accept:'application/vnd.github.v3+json','Content-Type':'application/json'}, body:JSON.stringify(body) });
+    var r=await fetch(WORKER_URL,{ method:'PUT', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body) });
     var json=await r.json();
     if(r.ok){ currentSha=json.content.sha; setBadge('ok','Salvo no GitHub'); }
     else throw new Error(json.message);
@@ -462,7 +456,7 @@ async function triggerSave(){
 async function loadData(){
   setBadge('saving','Carregando...');
   try {
-    var r=await fetch(API_URL+'?ref='+GH_BRANCH+'&t='+Date.now(),{ headers:{Authorization:'token '+GH_TOKEN, Accept:'application/vnd.github.v3+json'} });
+    var r=await fetch(WORKER_URL+'?t='+Date.now());
     if(r.status===404){ await triggerSave(); return; }
     var json=await r.json();
     currentSha=json.sha;
